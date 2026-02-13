@@ -1,0 +1,151 @@
+.activities-page {
+    padding: 8rem 2rem 4rem;
+    min-height: 100vh;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+}
+
+.section-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    border-left: 4px solid var(--accent-secondary);
+    padding-left: 1rem;
+}
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.report-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.report-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-primary);
+}
+
+.report-icon {
+    color: var(--accent-secondary);
+    margin-right: 1rem;
+}
+
+.report-info h3 {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.report-year {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.report-arrow {
+    margin-left: auto;
+    color: var(--text-secondary);
+    transition: transform 0.3s;
+}
+
+.report-card:hover .report-arrow {
+    transform: translateX(5px);
+    color: var(--accent-primary);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.event-card {
+    display: flex;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    gap: 1.5rem;
+}
+
+.event-date {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+    padding: 1rem;
+    border-radius: 0.8rem;
+    min-width: 70px;
+    height: 80px;
+}
+
+.event-date .day {
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.event-date .month {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.event-details h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.btn-sm {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-sm:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+@media (max-width: 600px) {
+    .event-card {
+        flex-direction: column;
+    }
+
+    .event-date {
+        width: 100%;
+        flex-direction: row;
+        height: auto;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+}
