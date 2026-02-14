@@ -1,70 +1,86 @@
 
-# IEDC CCE - Design Theme & Guidelines
+# IEDC CCE - Design System & Component Architecture
 
-This document outlines the design language, color palette, and component styles derived from the **Hero** and **Achievements** sections. All future development must adhere to these guidelines to ensure consistency.
+This document outlines the design language, color palette, and **reusable component architecture**. To ensure scalability and maintainability, **all new features must utilize the core components** defined below rather than creating ad-hoc styles.
 
-## 1. Color Palette
+## 1. Core Principles
+- **DRY (Don't Repeat Yourself):** Use shared components for Sections, Headings, and Cards.
+- **Atomic Design:** Build complex pages from small, reusable atoms (buttons, badges) and molecules (cards, banners).
+- **Theme Consistency:** All colors and fonts must come from CSS variables.
 
-| Usage | Color | Hex Code | Description |
-| :--- | :--- | :--- | :--- |
-| **Background** | Core Dark | `#050505` | Primary background color. Deep, almost black. |
-| **Background** | Secondary | `#13131f` | (Optional) Slightly lighter dark for cards/sections. |
-| **Text** | Primary | `#FFFFFF` | Main headings and content. |
-| **Text** | Secondary | `#A1A1AA` | Subtitles, descriptions, grid text (`text-secondary`). |
-| **Accent** | **Gold** | `#D4AF37` | **Primary Brand Accent**. Used for "Join" buttons, highlights, badges, and key keywords. |
-| **Accent** | Red | `#FE4A3B` | Secondary accent (use sparingly). |
+## 2. Design Tokens (CSS Variables)
 
-## 2. Typography
+| Usage | Color | Variable |
+| :--- | :--- | :--- |
+| **Background** | Core Dark | `--bg-primary` (`#050505`) |
+| **Text** | Primary | `--text-primary` (`#FFFFFF`) |
+| **Text** | Secondary | `--text-secondary` (`#A1A1AA`) |
+| **Accent** | **Gold** | `--accent-gold` (`#D4AF37`) |
+| **Accent** | Red | `--accent-red` (`#FE4A3B`) |
 
-### Font Families
-- **Headings:** `Anton`, sans-serif
-  - Usage: Hero titles, Section headers, "About Us", "Our Vision".
-  - Style: Uppercase, Heavy weight, Condensed.
-- **Subheadings:** `Oswald`, sans-serif
-  - Usage: Card overlays, secondary titles.
-- **Body:** `Inter`, sans-serif
-  - Usage: Paragraph text, descriptions, navigation links.
+## 3. Reusable Components (React)
 
-### Text Styles
-- **Hero Title:** size `8rem` (desktop), Uppercase, `line-height: 0.9`.
-- **Section Title:** size `4rem`, Uppercase.
-- **Gradient Text:** Avoid generic gradients. Use Solid White or Solid Gold.
-- **Outline Text:** Use CSS `-webkit-text-stroke: 1px rgba(255,255,255,0.3)` with `color: transparent` for "Hollow" text effects (seen in "OUR ACHIEVEMENTS").
+### A. Layout Wrappers
+*Instead of rewriting section containers:*
+- **`PageContainer`**: Standard wrapper with top padding for navbar (`pt-24`) and min-height.
+- **`Section`**: Standard section wrapper with padding (`py-24`).
+- **`SplitSection`**: The "Zig-Zag" layout used in About/Vision. Accepts `image`, `title`, `text`, and `reverse` prop.
 
-## 3. UI Components & Patterns
+### B. Typography Components
+*Instead of raw `h1/h2` tags:*
+- **`SectionTitle`**: The massive `Anton` header.
+  - *Props:* `title` (string), `align` ('left'|'center'), `color` (default white).
+- **`SectionSubtitle`**: The `Oswald` or `Inter` subheader with the signature **Green/Gold Underline**.
+  - *Props:* `text`, `underlineColor`.
 
-### A. Buttons
-- **Shape:** Slightly rounded corners (`border-radius: 4px`).
-- **Style:** Solid Gold background (`#D4AF37`) with Black text for primary actions ("JOIN IEDC").
-- **Hover:** Slight opacity change or `translateY(-1px)`.
+### C. UI Elements
+- **`Button`**:
+  - *Variants:* `primary` (Gold), `outline` (Transparent), `text` (Link style).
+  - *Props:* `onClick`, `href`, `icon`.
+- **`GradientText`**: Helper for text masking (if needed for special headers).
+- **`Badge`**: The rotating circular badge component (`BrandBadge`).
 
-### B. Cards (Achievements Style)
-- **Aspect Ratio:** Portrait (Vertical rectangles).
-- **Behavior:**
-  - **Auto-Scroll**: Horizontal infinite scroll.
-  - **Grayscale to Color**: Images are Black & White by default (`grayscale(100%)`).
-  - **Hover Effect**: Full color reveal (`grayscale(0%)`) + Scaled up (`scale(1.02)`).
-- **Overlay:** Gradient overlay at the bottom for text readability.
+### D. Cards & Media
+- **`PortraitCard`**: Used in Achievements.
+  - *Behavior:* Grayscale -> Color on hover.
+  - *Props:* `image`, `title`, `year`, `overlayContent`.
+- **`BannerCard`**: Used in TBI/Startups.
+  - *Behavior:* Wide aspect ratio, hover zoom.
+  - *Props:* `image`, `title`, `description`.
 
-### C. Layout Patterns
-- **Split Sections (Zig-Zag):**
-  - Alternating layout: [Text Left + Image Right] then [Image Left + Text Right].
-  - **Images:** Full cover, minimal styling, subtle shadow.
-  - **Text:** Large Heading + Green Underline Accent + Body Text.
+## 4. Implementation Guidelines
 
-### D. Animations & Interactons
-- **Floating Elements:** Rotating circular badges ("JOIN • IEDC • CCE").
-- **Scroll Indicators:** Bouncing arrows at bottom of hero.
-- **Navbar:** 
-  - Transparent at top.
-  - Glassmorphic dark blur on scroll.
-  - Links: Text-only, clean hover effects.
+### New Page Creation Workflow
+1. **Import Wrappers:** Start with `PageContainer`.
+2. **Add Header:** Use `SectionTitle` for the page heading.
+3. **Add Content:**
+   - If listing items: Use `Grid` wrapper + `PortraitCard` or `BannerCard`.
+   - If explanatory text: Use `SplitSection` pattern.
+4. **Style:** Do **not** write new CSS files unless absolutely necessary for complex, unique animations. Use utility classes or existing component CSS.
 
-## 4. Implementation Rules
-1. **Always** use `var(--accent-gold)` for primary calls to action.
-2. **Never** use rounded/pill buttons (unless specified otherwise); stick to slightly rounded squares.
-3. **Images** in lists/grids should generally follow the "B&W to Color" interaction pattern.
-4. **Section Headers** should be massive (`Anton` font) and typically Uppercase.
+### Animation Standards (Framer Motion)
+- **Entry:** Simple fade-up (`opacity: 0, y: 20` -> `opacity: 1, y: 0`).
+- **Hover:** Subtle scale (`scale(1.02)`).
+- **Scroll:** Parallax effect for background images specific to `SplitSection`.
+
+## 5. Directory Structure
+```
+src/
+  components/
+    common/          <-- REUSABLE ATOMS
+      Button.jsx
+      SectionTitle.jsx
+      Section.jsx
+    layout/
+      Navbar.jsx
+      Footer.jsx
+    features/        <-- COMPLEX COMPOSITIONS
+      Hero.jsx
+      Achievements.jsx
+  pages/             <-- PAGE VIEWS
+    Home.jsx
+    TBIPage.jsx
+```
 
 ---
-*Generated based on Hero & Achievements analysis.*
+*Adhere to this architecture to ensure the codebase remains clean as the site grows.*

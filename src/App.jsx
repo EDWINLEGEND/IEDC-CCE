@@ -7,6 +7,7 @@ import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import ActivitiesPage from './pages/ActivitiesPage';
 import ContactPage from './pages/ContactPage';
+import TBIPage from './pages/TBIPage';
 
 // Simple placeholder for pages not fully implemented
 const PlaceholderPage = ({ title }) => (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/activities" element={<ActivitiesPage />} />
           <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
           <Route path="/startups" element={<PlaceholderPage title="Startups & Consultancies" />} />
+          <Route path="/tbi" element={<TBIPage />} />
           <Route path="/contact" element={<ContactPage />} />
         </Routes>
         <Footer />

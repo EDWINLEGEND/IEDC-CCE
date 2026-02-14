@@ -1,0 +1,154 @@
+.tbi-page {
+    padding-top: 8rem;
+    /* Space for fixed navbar */
+    padding-bottom: 6rem;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+}
+
+.tbi-header {
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.tbi-title {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+}
+
+.tbi-underline {
+    width: 100px;
+    height: 4px;
+    background-color: var(--accent-gold);
+    margin: 0 auto 1.5rem;
+}
+
+.tbi-subtitle {
+    font-family: var(--font-body);
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.startups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 4rem;
+}
+
+.startup-card {
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.startup-name {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.startup-banner-wrapper {
+    width: 100%;
+    height: 250px;
+    /* "Small banner" space as requested */
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.startup-banner {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(100%) contrast(1.1);
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.startup-card:hover .startup-banner {
+    filter: grayscale(0%) contrast(1);
+    transform: scale(1.05);
+    /* Slight zoom on hover */
+}
+
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.startup-info {
+    padding: 0 1rem;
+}
+
+.startup-desc {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+.read-more-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.read-more-btn {
+    font-family: var(--font-subheading);
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.read-more-btn:hover {
+    transform: translateX(5px);
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .startups-grid {
+        grid-template-columns: 1fr;
+        /* Stack on smaller screens */
+        gap: 5rem;
+    }
+
+    .startup-banner-wrapper {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tbi-title {
+        font-size: 3.5rem;
+    }
+
+    .startup-name {
+        font-size: 2rem;
+    }
+
+    .startups-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
