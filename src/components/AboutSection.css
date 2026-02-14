@@ -63,11 +63,11 @@
 }
 
 .info-underline {
-    width: 80px;
     height: 6px;
-    background-color: #22c55e;
-    /* Green accent */
+    background-color: var(--accent-gold);
+    /* Gold accent */
     margin-bottom: 2rem;
+    /* Width will be controlled by animation */
 }
 
 .info-text p {
