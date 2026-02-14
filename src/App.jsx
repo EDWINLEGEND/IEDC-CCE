@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Achievements from './components/Achievements';
 import AboutSection from './components/AboutSection';
 import Footer from './components/Footer';
 import ActivitiesPage from './pages/ActivitiesPage';
@@ -18,6 +19,7 @@ const PlaceholderPage = ({ title }) => (
 const Home = () => (
   <>
     <Hero />
+    <Achievements />
     <AboutSection />
   </>
 );
