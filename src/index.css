@@ -1,13 +1,17 @@
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #13131f;
+  --bg-primary: #050505;
   --text-primary: #ffffff;
   --text-secondary: #a1a1aa;
-  --accent-primary: #3b82f6;
-  --accent-secondary: #8b5cf6;
-  --accent-pink: #ec4899;
-  
-  --font-family: 'Space Grotesk', sans-serif;
+
+  /* Brand Colors from Reference */
+  --accent-gold: #D4AF37;
+  /* The "Community" color */
+  --accent-red: #FE4A3B;
+  /* The "Donate" button color */
+
+  --font-heading: 'Anton', sans-serif;
+  --font-subheading: 'Oswald', sans-serif;
+  --font-body: 'Inter', sans-serif;
 }
 
 * {
@@ -19,19 +23,16 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--accent-primary);
+  transition: opacity 0.3s ease;
 }
 
 ul {
@@ -39,62 +40,57 @@ ul {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Glassmorphism utility */
-.glass {
-  background: rgba(19, 19, 31, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gradient-text {
-  background: linear-gradient(to right, var(--accent-primary), var(--accent-pink));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
 .btn {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
-  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+  /* Slightly rounded, almost square like ref */
   font-weight: 600;
+  font-family: var(--font-body);
   cursor: pointer;
   border: none;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+.btn-primary {
+  background-color: var(--accent-red);
+  color: white;
 }
 
-/* Animations */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.btn-outline:hover {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-secondary);
+  background: #333;
   border-radius: 4px;
 }

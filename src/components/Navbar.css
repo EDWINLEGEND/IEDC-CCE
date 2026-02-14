@@ -3,47 +3,104 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding: 1.5rem 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    background: transparent;
 }
 
-.navbar .container {
+.navbar-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar-scrolled {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 100%;
+    padding: 0 2rem;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-.nav-links {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
     display: flex;
-    gap: 2rem;
     align-items: center;
+    gap: 0.5rem;
 }
 
-.nav-links a {
+.logo-bold {
+    font-weight: 700;
+    color: white;
+}
+
+.logo-thin {
+    font-weight: 300;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+.nav-links-desktop {
+    display: flex;
+    gap: 1.5rem;
+    /* Reduced gap to fit more items */
+    overflow-x: auto;
+    /* horizontal scroll if screen too small but not mobile yet */
+    white-space: nowrap;
+    scrollbar-width: none;
+    /* hide scrollbar */
+}
+
+.nav-link {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
     font-weight: 500;
+    color: #ccc;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
     position: relative;
+    transition: color 0.3s;
 }
 
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 0;
-    background-color: var(--accent-primary);
-    transition: width 0.3s ease;
+.nav-link:hover {
+    color: white;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+.nav-actions-desktop {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+/* Yellow Button Style */
+.btn-yellow {
+    background-color: var(--accent-gold);
+    color: #000;
+    border: none;
+}
+
+.btn-yellow:hover {
+    background-color: #c29f2d;
+    transform: translateY(-1px);
 }
 
 .menu-btn {
@@ -51,28 +108,58 @@
     background: none;
     border: none;
     cursor: pointer;
+    z-index: 1001;
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        height: calc(100vh - 60px);
-        background: var(--bg-primary);
-        /* Fallback */
-        background: rgba(10, 10, 15, 0.95);
-        backdrop-filter: blur(10px);
-        flex-direction: column;
-        justify-content: center;
-        transform: translateX(100%);
-        transition: transform 0.3s ease-in-out;
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    z-index: 999;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.mobile-nav-links a {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+.mobile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-direction: column;
+}
+
+@media (max-width: 1200px) {
+    .nav-links-desktop {
+        display: none;
+        /* Switch to mobile menu earlier due to many links */
     }
 
-    .nav-links.active {
-        transform: translateX(0);
+    .nav-actions-desktop {
+        display: none;
     }
 
     .menu-btn {
