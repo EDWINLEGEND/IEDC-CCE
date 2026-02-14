@@ -4,34 +4,45 @@ import './AboutSection.css';
 
 const AboutSection = () => {
     return (
-        <section className="about-section container" id="about">
-            <div className="section-header">
-                <h2 className="section-title">About <span className="gradient-text">Us</span></h2>
-                <div className="underline"></div>
-            </div>
-
-            <div className="about-content">
-                <div className="about-text">
-                    <p>
-                        The Innovation and Entrepreneurship Development Centre of CCE is an organisation that aims to promote the institutional vision of transforming youngsters into technological entrepreneurs and innovative leaders.
-                    </p>
-                    <p>
-                        The initiative is to address the rising trend of corporate job culture and establish a platform to pursue ideas and businesses at an early stage. We at IEDC CCE host various workshops, speaker sessions, competitions to develop skill sets and provide essential resources to take up entrepreneurship as a career.
-                    </p>
+        <div className="info-sections-wrapper">
+            {/* About Us Section */}
+            <section className="info-section about-bg" id="about">
+                <div className="info-overlay"></div>
+                <div className="container info-container">
+                    <div className="info-content">
+                        <h2 className="info-title">ABOUT US</h2>
+                        <div className="info-underline"></div>
+                        <div className="info-text">
+                            <p>
+                                The Innovation and Entrepreneurship Development Centre of CCE is an organisation that aims to promote the institutional vision of transforming youngsters into technological entrepreneurs and innovative leaders.
+                            </p>
+                            <p>
+                                The initiative is to address the rising trend of corporate job culture and establish a platform to pursue ideas and businesses at an early stage. We at IEDC CCE host various workshops, speaker sessions, competitions to develop skill sets and provide essential resources to take up entrepreneurship as a career.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+            </section>
 
-                <div className="vision-box glass">
-                    <h3>Our Vision</h3>
-                    <p>
-                        "The Innovation and Entrepreneurship Development Centre aims to inculcate and strengthen entrepreneurial quality and motivation necessary to develop knowledge and skills among members of IEDC."
-                    </p>
-                    <blockquote className="vision-quote">
-                        "There is one thing stronger than all the armies in the world, and that is an idea whose time has come."
-                        <span>- Victor Hugo</span>
-                    </blockquote>
+            {/* Our Vision Section */}
+            <section className="info-section vision-bg" id="vision">
+                <div className="info-overlay"></div>
+                <div className="container info-container">
+                    <div className="info-content">
+                        <h2 className="info-title">OUR VISION</h2>
+                        <div className="info-underline"></div>
+                        <div className="info-text">
+                            <p>
+                                The Innovation and Entrepreneurship Development Centre aims to inculcate and strengthen entrepreneurial quality and motivation necessary to develop knowledge and skills among members of IEDC. We aim to impart basis managerial knowledge and understanding, which help students to formulate the effective, innovative and profitable project.
+                            </p>
+                            <p>
+                                Provide information about the process, procedure and rules & regulations for setting up new projects and promote development of science and technology based enterprises.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
     );
 };
 
