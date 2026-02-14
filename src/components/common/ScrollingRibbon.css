@@ -1,0 +1,48 @@
+.scrolling-ribbon-container {
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--accent-gold);
+    /* Default Yellow */
+    color: black;
+    padding: 1rem 0;
+    white-space: nowrap;
+    display: flex;
+    position: relative;
+    cursor: default;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+}
+
+.scrolling-ribbon-container:hover {
+    background-color: black;
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    /* Optional border/separator on hover */
+}
+
+.scrolling-ribbon-content {
+    display: inline-block;
+    animation: scroll 40s linear infinite;
+    font-family: var(--font-heading);
+    /* Anton */
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-right: 2rem;
+}
+
+/* Pause animation on hover if desired, usually better to keep running */
+/* .scrolling-ribbon-container:hover .scrolling-ribbon-content {
+    animation-play-state: paused; 
+} */
+
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}

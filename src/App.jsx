@@ -13,6 +13,7 @@ import EngraversPage from './pages/EngraversPage';
 import HobbyHubPage from './pages/HobbyHubPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RulesPage from './pages/RulesPage';
+import ScrollingRibbon from './components/common/ScrollingRibbon';
 
 // Simple placeholder for pages not fully implemented
 const PlaceholderPage = ({ title }) => (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <ScrollingRibbon />
         <Footer />
       </div>
     </Router>
