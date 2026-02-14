@@ -60,7 +60,6 @@ const Navbar = () => {
 
           <Link to="/rules" className="nav-link">Rules and Regulations</Link>
           <Link to="/nisp" className="nav-link">NISP</Link>
-          <Link to="/tbi" className="nav-link">TBI</Link>
           <Link to="/contact" className="nav-link">Contact Us</Link>
         </div>
 
@@ -83,7 +82,6 @@ const Navbar = () => {
             <Link to="/startups" onClick={() => setIsOpen(false)}>Startups</Link>
             <Link to="/rules" onClick={() => setIsOpen(false)}>Rules</Link>
             <Link to="/nisp" onClick={() => setIsOpen(false)}>NISP</Link>
-            <Link to="/tbi" onClick={() => setIsOpen(false)}>TBI</Link>
             <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
             <div className="mobile-actions">
               <button className="btn btn-yellow">JOIN IEDC</button>
