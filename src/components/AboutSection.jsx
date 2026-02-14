@@ -1,15 +1,16 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import './AboutSection.css';
 
 const AboutSection = () => {
     return (
         <div className="info-sections-wrapper">
-            {/* About Us Section */}
-            <section className="info-section about-bg" id="about">
-                <div className="info-overlay"></div>
-                <div className="container info-container">
-                    <div className="info-content">
+
+            {/* About Us Section - Text Left, Image Right */}
+            <section className="split-section" id="about">
+                <div className="container split-container reverse-layout">
+                    <div className="split-content">
                         <h2 className="info-title">ABOUT US</h2>
                         <div className="info-underline"></div>
                         <div className="info-text">
@@ -21,14 +22,19 @@ const AboutSection = () => {
                             </p>
                         </div>
                     </div>
+                    <div className="split-image-wrapper">
+                        <div className="split-image about-img"></div>
+                    </div>
                 </div>
             </section>
 
-            {/* Our Vision Section */}
-            <section className="info-section vision-bg" id="vision">
-                <div className="info-overlay"></div>
-                <div className="container info-container">
-                    <div className="info-content">
+            {/* Our Vision Section - Image Left, Text Right (Reversed) */}
+            <section className="split-section" id="vision">
+                <div className="container split-container reverse-layout">
+                    <div className="split-image-wrapper">
+                        <div className="split-image vision-img"></div>
+                    </div>
+                    <div className="split-content">
                         <h2 className="info-title">OUR VISION</h2>
                         <div className="info-underline"></div>
                         <div className="info-text">
@@ -42,6 +48,7 @@ const AboutSection = () => {
                     </div>
                 </div>
             </section>
+
         </div>
     );
 };

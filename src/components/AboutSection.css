@@ -2,57 +2,59 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    background-color: var(--bg-primary);
+    /* Ensure background matches site */
 }
 
-.info-section {
-    position: relative;
+.split-section {
     padding: 6rem 0;
     width: 100%;
-    min-height: 60vh;
+    position: relative;
+}
+
+.split-container {
     display: flex;
     align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    /* Parallax effect */
+    gap: 4rem;
 }
 
-/* Background Images - Using placeholders that match the vibe */
-.about-bg {
-    background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+.reverse-layout {
+    flex-direction: row-reverse;
 }
 
-.vision-bg {
-    background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+.split-content {
+    flex: 1;
 }
 
-.info-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.split-image-wrapper {
+    flex: 1;
+    height: 500px;
+    position: relative;
+}
+
+.split-image {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    /* Dark overlay for text readability */
-    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    /* Optional: Slight rounding */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.info-container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+/* Specific Images */
+.about-img {
+    background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
 }
 
-.info-content {
-    max-width: 900px;
+.vision-img {
+    background-image: url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
 }
 
+/* Typography styles retained */
 .info-title {
     font-family: var(--font-heading);
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 0.5rem;
@@ -64,27 +66,37 @@
     width: 80px;
     height: 6px;
     background-color: #22c55e;
-    /* Green accent color matching image */
-    margin-bottom: 2.5rem;
+    /* Green accent */
+    margin-bottom: 2rem;
 }
 
 .info-text p {
     font-family: var(--font-body);
-    font-size: 1.25rem;
-    font-weight: 600;
-    /* Bold text as in image */
-    color: #f3f4f6;
-    line-height: 1.6;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    /* Softer gray for this layout */
+    line-height: 1.7;
     margin-bottom: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-@media (max-width: 768px) {
-    .info-title {
-        font-size: 3rem;
+/* Responsive */
+@media (max-width: 1024px) {
+    .split-container {
+        flex-direction: column;
+        gap: 3rem;
     }
 
-    .info-text p {
-        font-size: 1.1rem;
+    .reverse-layout {
+        flex-direction: column;
+    }
+
+    .split-image-wrapper {
+        width: 100%;
+        height: 350px;
+    }
+
+    .info-title {
+        font-size: 3rem;
     }
 }
