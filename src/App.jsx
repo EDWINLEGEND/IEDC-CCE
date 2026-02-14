@@ -12,6 +12,7 @@ import TBIPage from './pages/TBIPage';
 import EngraversPage from './pages/EngraversPage';
 import HobbyHubPage from './pages/HobbyHubPage';
 import NotFoundPage from './pages/NotFoundPage';
+import RulesPage from './pages/RulesPage';
 
 // Simple placeholder for pages not fully implemented
 const PlaceholderPage = ({ title }) => (
@@ -44,7 +45,7 @@ function App() {
           <Route path="/startups/engravers" element={<EngraversPage />} />
           <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
 
-          <Route path="/rules" element={<PlaceholderPage title="Rules and Regulations" />} />
+          <Route path="/rules" element={<RulesPage />} />
           <Route path="/nisp" element={<PlaceholderPage title="NISP" />} />
 
           <Route path="/contact" element={<ContactPage />} />
