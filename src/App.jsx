@@ -9,6 +9,10 @@ import ActivitiesPage from './pages/ActivitiesPage';
 import ContactPage from './pages/ContactPage';
 import TBIPage from './pages/TBIPage';
 
+import EngraversPage from './pages/EngraversPage';
+import HobbyHubPage from './pages/HobbyHubPage';
+import NotFoundPage from './pages/NotFoundPage';
+
 // Simple placeholder for pages not fully implemented
 const PlaceholderPage = ({ title }) => (
   <div className="container" style={{ padding: '8rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
@@ -35,9 +39,16 @@ function App() {
           <Route path="/about" element={<div style={{ paddingTop: '6rem' }}><AboutSection /></div>} />
           <Route path="/activities" element={<ActivitiesPage />} />
           <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
-          <Route path="/startups" element={<PlaceholderPage title="Startups & Consultancies" />} />
+
           <Route path="/tbi" element={<TBIPage />} />
+          <Route path="/startups/engravers" element={<EngraversPage />} />
+          <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
+
+          <Route path="/rules" element={<PlaceholderPage title="Rules and Regulations" />} />
+          <Route path="/nisp" element={<PlaceholderPage title="NISP" />} />
+
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </div>

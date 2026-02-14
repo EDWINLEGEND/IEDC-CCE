@@ -1,3 +1,5 @@
+@import './NavbarDropdown.css';
+
 .navbar {
     position: fixed;
     top: 0;
@@ -62,11 +64,7 @@
     display: flex;
     gap: 1.5rem;
     /* Reduced gap to fit more items */
-    overflow-x: auto;
-    /* horizontal scroll if screen too small but not mobile yet */
-    white-space: nowrap;
-    scrollbar-width: none;
-    /* hide scrollbar */
+    align-items: center;
 }
 
 .nav-link {

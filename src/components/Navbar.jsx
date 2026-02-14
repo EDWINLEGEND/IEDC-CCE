@@ -6,6 +6,7 @@ import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
 
@@ -37,7 +38,26 @@ const Navbar = () => {
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/activities" className="nav-link">Activities</Link>
           <Link to="/ipl" className="nav-link">IPL 2.0</Link>
-          <Link to="/startups" className="nav-link">Startups and Consultancies</Link>
+
+          {/* Startups Dropdown */}
+          <div
+            className="nav-item-dropdown"
+            onMouseEnter={() => setDropdownOpen(true)}
+            onMouseLeave={() => setDropdownOpen(false)}
+          >
+            <Link to="/tbi" className="nav-link dropdown-trigger">
+              Startups and Consultancies
+            </Link>
+            <div className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
+              <Link to="/tbi" className="dropdown-item">All Startups (TBI)</Link>
+              <Link to="/startups/engravers" className="dropdown-item">Engravers</Link>
+              <Link to="/startups/hobbyhub" className="dropdown-item">HobbyHub</Link>
+              <Link to="/startups/trawell" className="dropdown-item">Trawell</Link>
+              <Link to="/startups/levantate" className="dropdown-item">Levantate Labs</Link>
+              <Link to="/startups/learnesta" className="dropdown-item">Learnesta</Link>
+            </div>
+          </div>
+
           <Link to="/rules" className="nav-link">Rules and Regulations</Link>
           <Link to="/nisp" className="nav-link">NISP</Link>
           <Link to="/tbi" className="nav-link">TBI</Link>
