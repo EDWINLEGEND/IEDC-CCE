@@ -30,19 +30,7 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Navigation Column */}
-                    <div className="footer-nav-column">
-                        <h4 className="footer-heading">NAVIGATION</h4>
-                        <ul className="footer-links">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/about">About Us</Link></li>
-                            <li><Link to="/activities">Activities</Link></li>
-                            <li><Link to="/tbi">Startups (TBI)</Link></li>
-                            <li><Link to="/ipl">IPL 2.0</Link></li>
-                            <li><Link to="/rules">Rules & Regulations</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
-                        </ul>
-                    </div>
+
 
                     {/* Social Column */}
                     <div className="footer-social-column">

@@ -81,7 +81,6 @@
 }
 
 /* Nav & Social Columns */
-.footer-nav-column,
 .footer-social-column {
     flex: 1;
     min-width: 150px;
@@ -96,22 +95,13 @@
     font-weight: 600;
 }
 
-.footer-links,
 .footer-social-links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.footer-links a {
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
-}
 
-.footer-links a:hover {
-    color: var(--accent-gold);
-}
 
 .footer-social-links a {
     display: flex;
