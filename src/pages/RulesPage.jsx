@@ -105,7 +105,7 @@ const RulesPage = () => {
         .rule-heading {
           font-family: var(--font-heading);
           font-size: 2rem;
-          color: white;
+          color: var(--text-primary);
           margin-bottom: 1rem;
           text-transform: uppercase;
         }
@@ -122,7 +122,7 @@ const RulesPage = () => {
           color: var(--accent-gold);
         }
         .bg-dark-secondary {
-          background-color: rgba(255,255,255,0.05);
+          background-color: var(--bg-secondary);
         }
         .mb-12 { margin-bottom: 3rem; }
         .mb-4 { margin-bottom: 1rem; }

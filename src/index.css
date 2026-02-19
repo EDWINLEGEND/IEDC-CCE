@@ -1,17 +1,52 @@
 :root {
-  --bg-primary: #050505;
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
+  /* LIGHT MODE (Default) */
+  /* LIGHT MODE (Default - Overrides for specific dark sections) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #050505;
+  /* Black bg for Achivements/Secondary sections */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-on-black: #ffffff;
+  /* New variable for text on black bg */
+  --text-secondary-on-black: #a1a1aa;
+  /* New variable */
+  --border-color: rgba(0, 0, 0, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --footer-bg: #000000;
+  /* Black bg for Footer */
+  --footer-text: #ffffff;
+  --footer-border: rgba(255, 255, 255, 0.1);
 
-  /* Brand Colors from Reference */
+  --scrollbar-thumb: #9ca3af;
+  --scrollbar-track: #f3f4f6;
+
+  /* Brand Colors */
   --accent-gold: #D4AF37;
-  /* The "Community" color */
   --accent-red: #FE4A3B;
-  /* The "Donate" button color */
 
+  /* Fonts */
   --font-heading: 'Anton', sans-serif;
   --font-subheading: 'Oswald', sans-serif;
   --font-body: 'Inter', sans-serif;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #050505;
+  --bg-secondary: #0a0a0a;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-on-black: #ffffff;
+  --text-secondary-on-black: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(0, 0, 0, 0.9);
+  --nav-scrolled-bg: rgba(5, 5, 5, 0.95);
+  --card-bg: #1a1a1a;
+  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --scrollbar-thumb: #4b5563;
+  --scrollbar-track: #0a0a0a;
 }
 
 html {
@@ -91,10 +126,10 @@ ul {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }

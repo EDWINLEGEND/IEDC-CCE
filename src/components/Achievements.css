@@ -16,10 +16,13 @@
     line-height: 1;
     text-transform: uppercase;
     margin-bottom: 1rem;
+    color: var(--text-on-black);
+    /* Force white text */
 }
 
 .text-outline {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+    /* Restored for dark bg */
     color: transparent;
 }
 
@@ -28,7 +31,8 @@
 }
 
 .section-desc {
-    color: var(--text-secondary);
+    color: var(--text-secondary-on-black);
+    /* Force light gray */
     font-size: 1.1rem;
     max-width: 500px;
 }

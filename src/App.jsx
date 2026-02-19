@@ -31,31 +31,35 @@ const Home = () => (
   </>
 );
 
+import { ThemeProvider } from './context/ThemeContext';
+
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<div style={{ paddingTop: '6rem' }}><AboutSection /></div>} />
-          <Route path="/activities" element={<ActivitiesPage />} />
-          <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
+    <ThemeProvider>
+      <Router>
+        <div className="app">
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<div style={{ paddingTop: '6rem' }}><AboutSection /></div>} />
+            <Route path="/activities" element={<ActivitiesPage />} />
+            <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
 
-          <Route path="/tbi" element={<TBIPage />} />
-          <Route path="/startups/engravers" element={<EngraversPage />} />
-          <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
+            <Route path="/tbi" element={<TBIPage />} />
+            <Route path="/startups/engravers" element={<EngraversPage />} />
+            <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
 
-          <Route path="/rules" element={<RulesPage />} />
-          <Route path="/nisp" element={<PlaceholderPage title="NISP" />} />
+            <Route path="/rules" element={<RulesPage />} />
+            <Route path="/nisp" element={<PlaceholderPage title="NISP" />} />
 
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <ScrollingRibbon />
-        <Footer />
-      </div>
-    </Router>
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          <ScrollingRibbon />
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

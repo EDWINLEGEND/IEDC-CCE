@@ -56,7 +56,7 @@
     font-family: var(--font-heading);
     font-size: 4rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
     line-height: 1;
     text-transform: uppercase;

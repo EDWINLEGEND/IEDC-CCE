@@ -37,42 +37,16 @@
 }
 
 .text-white {
-    color: #fff;
+    color: var(--text-primary);
     letter-spacing: 0.02em;
     /* Added spacing */
 }
 
-.text-gold {
-    color: var(--accent-gold);
-    letter-spacing: 0.02em;
-    /* Added spacing */
-}
-
-.block {
-    display: block;
-    margin-bottom: 0.5rem;
-    /* Space between lines */
-}
-
-.hero-subtitle-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.subtitle-divider {
-    width: 2px;
-    height: 40px;
-    background-color: var(--accent-gold);
-    margin-bottom: 0.5rem;
-    /* Optional: Remove if not in design, but adds nice detail */
-    display: none;
-}
+/* ... */
 
 .hero-subtitle {
     font-family: var(--font-body);
-    color: #fff;
+    color: var(--text-secondary);
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;

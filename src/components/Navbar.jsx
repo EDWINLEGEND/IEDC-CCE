@@ -1,14 +1,18 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import './Navbar.css';
+import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
+  const { theme, toggleTheme } = useTheme();
+
+  // ... (scroll effect logic remains same)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,12 +69,19 @@ const Navbar = () => {
 
         {/* CTA Buttons - Desktop */}
         <div className="nav-actions-desktop">
+          <button
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={20} color="gold" /> : <Moon size={20} color="black" />}
+          </button>
           <button className="btn btn-yellow">JOIN IEDC</button>
         </div>
 
         {/* Mobile Menu Button */}
         <button className="menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-          {isOpen ? <X size={28} color="white" /> : <Menu size={28} color="white" />}
+          {isOpen ? <X size={28} className="nav-icon" /> : <Menu size={28} className="nav-icon" />}
         </button>
 
         {/* Mobile Menu Overlay */}
