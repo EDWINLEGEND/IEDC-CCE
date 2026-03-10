@@ -21,8 +21,9 @@ This document outlines the design language, color palette, and **reusable compon
 
 ### A. Layout Wrappers
 *All major landing page blocks must be housed in:*
-- **`CardSection`**: The definitive wrapper for the new wide UI. It provides edge margin and a massive rounded inner card (`border-radius: 60px` inside, `padding: 3.5rem 4rem`), scaling up to `1600px` to almost fit the screen width entirely.
+- **`CardSection`**: The definitive wrapper for the new wide UI. It provides minimal edge margin and a massively wide inner card (`border-radius: 24px` inside, `padding: 4rem`), scaling up to `1800px` to almost fit the screen width entirely, mirroring premium SaaS aesthetic.
   - *Usage:* `<CardSection id="home"> ... </CardSection>`
+- **`Navbar`**: Implements a wide floating header style, utilizing a soft `border-radius: 16px` (no longer an explicit pill). Typography relies on `DM Sans` at `0.95rem`.
 
 ### B. Typography Components
 - **Headings**: Use `Anton` font. `<h2 className="section-title">` or `<h1 className="hero-title">`.
@@ -42,8 +43,8 @@ This document outlines the design language, color palette, and **reusable compon
 ### New Page Creation Workflow
 1. **Import `CardSection`.**
 2. **Add Header:** Use `section-title` class inside your layout grid.
-3. **Add Content:** Align elements in a grid or flex row depending on content. Use massive `border-radius: 20px` for images.
-4. **Style:** Do **not** write new CSS files unless absolutely necessary. Rely on the `CardSection` padding.
+3. **Add Content:** Align elements in a grid or flex row depending on content. Apply smooth `border-radius: 24px` or `20px` to internal massive images to match the main card layout accurately.
+4. **Style:** Do **not** write new CSS files unless absolutely necessary. Rely on the `CardSection` spacing.
 
 ## 5. Directory Structure
 ```

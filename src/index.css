@@ -1,22 +1,23 @@
 :root {
   /* LIGHT MODE (Default - Advisora grey style) */
-  --bg-primary: #e8e6df;
-  /* Very light beige/gray background */
-  --bg-secondary: #dcdad3;
+  --bg-primary: #F0EFE9;
+  /* Very subtle warm light beige/gray from image */
+  --bg-secondary: #E5E3DB;
   /* Slightly darker */
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
+  --text-primary: #171615;
+  /* Extremely dark grey, softer than pure black */
+  --text-secondary: #6B6862;
   --text-on-black: #111827;
   --text-secondary-on-black: #4b5563;
-  --border-color: rgba(0, 0, 0, 0.05);
+  --border-color: rgba(0, 0, 0, 0.04);
   --glass-bg: rgba(255, 255, 255, 0.85);
   --nav-scrolled-bg: rgba(255, 255, 255, 0.95);
   --card-bg: #ffffff;
   /* Pure white card to contrast light beige page */
-  --card-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.05), 0 4px 10px rgba(0, 0, 0, 0.02);
-  --footer-bg: #1c1c1c;
+  --card-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.015);
+  --footer-bg: #1A1A1A;
   --footer-text: #ffffff;
-  --footer-border: rgba(255, 255, 255, 0.1);
+  --footer-border: rgba(255, 255, 255, 0.08);
 
   --scrollbar-thumb: #9ca3af;
   --scrollbar-track: #f3f4f6;
@@ -78,7 +79,7 @@ ul {
 }
 
 .container {
-  max-width: 1600px;
+  max-width: 1800px;
   margin: 0 auto;
   padding: 0 1rem;
 }

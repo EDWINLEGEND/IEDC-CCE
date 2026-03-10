@@ -1,14 +1,15 @@
 .site-footer {
     background-color: var(--footer-bg);
     color: var(--footer-text);
-    padding: 4rem 4rem 2rem;
+    padding: 6rem 5rem 4rem;
     font-family: var(--font-body);
-    /* Make the footer look like a massive floating card */
-    max-width: 1600px;
-    margin: 0 auto 1.5rem auto;
-    border-radius: 60px;
+    /* Massive floating dark card to contrast the white sections */
+    max-width: 1800px;
+    margin: 1.5rem auto 1.5rem auto;
+    border-radius: 24px;
     width: calc(100% - 2rem);
     box-sizing: border-box;
+    box-shadow: var(--card-shadow);
 }
 
 .footer-top {
@@ -154,8 +155,8 @@
 /* Responsive */
 @media (max-width: 768px) {
     .site-footer {
-        padding: 3rem 2rem 2rem;
-        border-radius: 32px;
+        padding: 4rem 2rem 2rem;
+        border-radius: 16px;
     }
 
     .footer-cta-title {
