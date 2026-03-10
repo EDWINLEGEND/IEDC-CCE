@@ -1,7 +1,6 @@
 .achievements-header {
-    margin-bottom: 3rem;
-    text-align: left;
-    max-width: 800px;
+    margin-bottom: 2rem;
+    max-width: 100%;
 }
 
 .title-light {
@@ -13,9 +12,9 @@
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: space-between;
-    margin-bottom: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    padding-top: 0;
+    border-top: none;
 }
 
 .stat-item {
@@ -68,20 +67,17 @@
 }
 
 @media (max-width: 768px) {
+    .achievements-header {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
     .achievements-stats {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
     }
 
     .stat-value {
         font-size: 3rem;
-    }
-
-    .achievements-gallery {
-        grid-template-columns: 1fr;
-    }
-
-    .gallery-img-wrapper {
-        aspect-ratio: 16/9;
     }
 }

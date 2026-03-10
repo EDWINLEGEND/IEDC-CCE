@@ -1,7 +1,6 @@
 .about-wrapper {
     display: flex;
     flex-direction: column;
-    padding-bottom: 4rem;
 }
 
 .about-content-layout {
@@ -11,19 +10,50 @@
     align-items: center;
 }
 
-.about-text-side p {
-    font-size: 1.15rem;
+/* Stacked variant for Image 2 parity */
+.about-content-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.stacked-text-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.stacked-text-header .section-title {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.stacked-text-header .stacked-body {
+    flex: 1;
+}
+
+.about-text-side p,
+.stacked-text-header p {
+    font-size: 1.1rem;
     color: var(--text-secondary);
     line-height: 1.7;
     margin-bottom: 1.5rem;
 }
 
-.about-image-side .rounded-img {
+.about-image-side .rounded-img,
+.stacked-image-wrapper .rounded-img {
     width: 100%;
     height: 100%;
     min-height: 400px;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.stacked-image-wrapper {
+    width: 100%;
+    height: 50vh;
+    min-height: 400px;
 }
 
 .title-light {
@@ -35,6 +65,11 @@
     .about-content-layout {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+
+    .stacked-text-header {
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
     .about-content-layout.reverse .about-text-side {

@@ -26,8 +26,8 @@ const PlaceholderPage = ({ title }) => (
 const Home = () => (
   <>
     <Hero />
-    <Achievements />
     <AboutSection />
+    <Achievements />
   </>
 );
 
