@@ -1,19 +1,14 @@
 .site-footer {
-    background-color: transparent;
-    padding: 0 0 2rem;
-    font-family: var(--font-body);
-}
-
-.footer-card-wrapper {
     background-color: var(--footer-bg);
     color: var(--footer-text);
-    border-radius: 40px;
-    padding: 5rem 4rem 3rem;
-    width: 95%;
+    padding: 4rem 4rem 2rem;
+    font-family: var(--font-body);
+    /* Make the footer look like a massive floating card */
     max-width: 1600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+    margin: 0 auto 1.5rem auto;
+    border-radius: 60px;
+    width: calc(100% - 2rem);
+    box-sizing: border-box;
 }
 
 .footer-top {
@@ -158,9 +153,9 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-    .footer-card-wrapper {
+    .site-footer {
         padding: 3rem 2rem 2rem;
-        border-radius: 24px;
+        border-radius: 32px;
     }
 
     .footer-cta-title {

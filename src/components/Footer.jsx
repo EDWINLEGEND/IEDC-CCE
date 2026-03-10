@@ -7,7 +7,7 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer className="site-footer">
-            <div className="footer-card-wrapper">
+            <div className="container">
                 <div className="footer-top">
 
                     {/* Brand / Call to Action Column */}

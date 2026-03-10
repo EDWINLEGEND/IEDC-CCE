@@ -11,9 +11,9 @@ This document outlines the design language, color palette, and **reusable compon
 
 | Usage | Color | Variable | Description |
 | :--- | :--- | :--- | :--- |
-| **Background** | Light Beige/Grey | `--bg-primary` | The page background that allows pure white cards to stand out (`#e8e6df`). |
-| **Wrapper/Secondary**| Light Khaki | `--bg-secondary` | Used for alternate wrappings or headers (`#dfdbce`). |
-| **Card Background** | Pure White | `--card-bg` | The background used by `CardSection` (`#ffffff`). |
+| **Background** | Light Beige/Gray | `--bg-primary` | The page background (`#e8e6df` in light mode) that allows pure white cards to stand out. |
+| **Wrapper/Secondary**| Slightly Darker | `--bg-secondary` | Used for alternate wrappings or slightly darker elements (`#dcdad3`). |
+| **Card Background** | Pure White | `--card-bg` | The background used by `CardSection`, providing premium contrast. |
 | **Accent Gold** | Gold | `--accent-gold` | Core primary brand CTA color. |
 | **Accent Red**  | Red | `--accent-red` | Strong secondary brand color. |
 
@@ -21,19 +21,17 @@ This document outlines the design language, color palette, and **reusable compon
 
 ### A. Layout Wrappers
 *All major landing page blocks must be housed in:*
-- **`CardSection`**: The definitive wrapper for the new UI. It provides edge padding and a massive rounded inner card (`border-radius: 40px` inside, `padding: 3rem`, `width: 95%`, `max-width: 1600px`). It almost spans the entire screen exactly like the Floating Navbar.
+- **`CardSection`**: The definitive wrapper for the new wide UI. It provides edge margin and a massive rounded inner card (`border-radius: 60px` inside, `padding: 3.5rem 4rem`), scaling up to `1600px` to almost fit the screen width entirely.
   - *Usage:* `<CardSection id="home"> ... </CardSection>`
 
 ### B. Typography Components
-- **Global Font**: EXCLUSIVELY `DM Sans` for all text, headings, and buttons.
-- **Headings**: Use `DM Sans`. `<h2 className="section-title">` or `<h1 className="hero-title">` with `letter-spacing: -1.5px` and `font-weight: 500`.
-- **Subheadings**: Use `DM Sans`. Keep it descriptive and clean in sentence case (`text-transform: none`).
+- **Headings**: Use `Anton` font. `<h2 className="section-title">` or `<h1 className="hero-title">`.
+- **Subheadings**: Use `Inter`. Keep it descriptive and clean.
 
 ### C. UI Elements
 - **`Button`**:
-  - *Modifiers:* `rounded-pill` class is heavily encouraged. Buttons use normal sentence case text (`text-transform: none; font-weight: 500;`).
-  - *Variants:* `btn-primary` (Gold/Orange depending on theme), `btn-outline` (Transparent with dark text and border on hover).
-- **Navbar**: Floating pill style (`borderRadius: 9999px`), `width: 95%`, `max-width: 1600px`. Centered at the top.
+  - *Modifiers:* `rounded-pill` class is heavily encouraged for the modernized UI.
+  - *Variants:* `btn-primary` (Red/Gold depending on theme), `btn-outline` (Transparent).
 
 ### D. Layout Patterns
 - **Stats Blocks**: Used in Achievements to show big text values. 

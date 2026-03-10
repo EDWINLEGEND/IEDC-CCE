@@ -23,6 +23,8 @@
 
 .scrolling-ribbon-content {
     display: inline-block;
+    flex-shrink: 0;
+    min-width: 100%;
     animation: scroll 40s linear infinite;
     font-family: var(--font-heading);
     /* Anton */
