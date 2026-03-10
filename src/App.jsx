@@ -37,10 +37,10 @@ const PlaceholderPage = ({ title }) => (
 const Home = () => (
   <>
     <Hero />
+    <Achievements />
     <BentoFeatures />
     <AboutSection />
     <RecentEvents />
-    <Achievements />
     <Excom />
   </>
 );
