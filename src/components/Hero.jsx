@@ -29,8 +29,8 @@ const Hero = () => {
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                     >
                         <div className="hero-actions">
-                            <button className="btn btn-primary rounded-pill btn-lg">Get Started <ArrowRight size={16} style={{ display: 'inline', marginLeft: '6px' }} /></button>
-                            <button className="btn btn-outline rounded-pill btn-lg">Free trial</button>
+                            <button className="btn btn-primary rounded-pill btn-lg">Get Started <span style={{ marginLeft: '4px' }}>→</span></button>
+                            <button className="btn hero-btn-outline rounded-pill btn-lg">Free trial</button>
                         </div>
                         <p className="hero-subtitle">
                             Create, innovate, and inspire. Transforming students into future leaders. Founded by tech experts, we create cutting-edge ecosystems tailored for innovators of all sizes.

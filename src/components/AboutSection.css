@@ -6,8 +6,39 @@
 .about-content-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     align-items: center;
+}
+
+.about-content-layout--reverse .about-text-side {
+    order: 1;
+}
+
+.about-content-layout--reverse .about-image-side {
+    order: 2;
+}
+
+/* About/Vision headings */
+.about-section-heading {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+    color: var(--text-primary);
+    text-transform: none;
+    margin-bottom: 0.5rem;
+    line-height: 1.05;
+}
+
+.about-section-heading::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
 }
 
 /* Stacked variant for Image 2 parity */

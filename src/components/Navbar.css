@@ -2,7 +2,7 @@
 
 .navbar {
     position: fixed;
-    top: 1.5rem;
+    top: 1rem;
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 2rem);
@@ -100,7 +100,7 @@
     border: none;
     padding: 0.7rem 1.8rem;
     /* adjusted for navbar size */
-    border-radius: 12px;
+    border-radius: 9999px;
     font-weight: 500;
     font-family: var(--font-body);
     cursor: pointer;

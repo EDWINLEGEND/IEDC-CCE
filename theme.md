@@ -2,64 +2,140 @@
 
 This document outlines the design language, color palette, and **reusable component architecture**. To ensure scalability and maintainability, **all new features must utilize the core components** defined below rather than creating ad-hoc styles.
 
+---
+
 ## 1. Core Principles
-- **Modern "Rounded Card" Aesthetic:** Following the new redesign, sections are housed inside large, stylized white/gray cards that float on a soft background, akin to modern SaaS interfaces.
+- **Modern "Rounded Card" Aesthetic:** Sections are housed inside large, stylized white cards that float on a soft warm-beige background, akin to modern SaaS interfaces (Advisora-style).
 - **DRY (Don't Repeat Yourself):** Use shared components for Sections, Headings, and Cards.
-- **Theme Consistency:** All colors and fonts must come from CSS variables.
+- **Theme Consistency:** All colors and fonts must come from CSS variables defined in `src/index.css`.
+- **Smooth Scrolling:** Lenis smooth scroll is active globally via `App.jsx`. All anchor navigation should account for this.
+
+---
 
 ## 2. Design Tokens (CSS Variables)
 
-| Usage | Color | Variable | Description |
+### Colors (Light Mode)
+
+| Usage | Value | Variable | Description |
 | :--- | :--- | :--- | :--- |
-| **Background** | Light Beige/Gray | `--bg-primary` | The page background (`#e8e6df` in light mode) that allows pure white cards to stand out. |
-| **Wrapper/Secondary**| Slightly Darker | `--bg-secondary` | Used for alternate wrappings or slightly darker elements (`#dcdad3`). |
-| **Card Background** | Pure White | `--card-bg` | The background used by `CardSection`, providing premium contrast. |
-| **Accent Gold** | Gold | `--accent-gold` | Core primary brand CTA color. |
-| **Accent Red**  | Red | `--accent-red` | Strong secondary brand color. |
+| **Page Background** | `#F0EFE9` | `--bg-primary` | Soft warm light beige that makes white cards stand out |
+| **Secondary BG** | `#E5E3DB` | `--bg-secondary` | Slightly darker beige for alternate elements |
+| **Card Background** | `#ffffff` | `--card-bg` | Pure white used by `CardSection` inner blocks |
+| **Text Primary** | `#171615` | `--text-primary` | Near-black, very deep dark text |
+| **Text Secondary** | `#6B6862` | `--text-secondary` | Muted brownish-gray for body text |
+| **Accent (Orange-Red)** | `#ff5722` | `--accent-gold` | Main CTA color – buttons, underlines, badges |
+| **Accent Red** | `#ff3d00` | `--accent-red` | Stronger variant, used sparingly |
+| **Footer BG** | `#1A1A1A` | `--footer-bg` | Very dark near-black card for footer |
+| **Card Shadow** | `0 8px 30px...` | `--card-shadow` | Very subtle drop shadow on card sections |
+
+### Typography
+
+| Role | Font | Notes |
+| :--- | :--- | :--- |
+| **All text** | `DM Sans` | Single font family across entire site |
+| **Headings** | `DM Sans`, weight 500–700 | Large section headings use `font-weight: 700` |
+| **Body** | `DM Sans`, weight 400 | Normal paragraphs, secondary text |
+| **Buttons** | `DM Sans`, weight 500–600 | Pill-shaped, no uppercase |
+
+---
 
 ## 3. Reusable Components (React)
 
 ### A. Layout Wrappers
-*All major landing page blocks must be housed in:*
-- **`CardSection`**: The definitive wrapper for the new wide UI. It provides minimal edge margin and a massively wide inner card (`border-radius: 24px` inside, `padding: 4rem`), scaling up to `1800px` to almost fit the screen width entirely, mirroring premium SaaS aesthetic.
+
+- **`CardSection`** — The definitive section wrapper. Every landing page block uses this.
+  - Provides `1rem` edge spacing, matching the gap between sections.
+  - Inner card: `border-radius: 24px`, `padding: 4rem`, `max-width: 1800px`
+  - Box shadow: `var(--card-shadow)`
   - *Usage:* `<CardSection id="home"> ... </CardSection>`
-- **`Navbar`**: Implements a wide floating header style, utilizing a soft `border-radius: 16px` (no longer an explicit pill). Typography relies on `DM Sans` at `0.95rem`.
 
-### B. Typography Components
-- **Headings**: Use `Anton` font. `<h2 className="section-title">` or `<h1 className="hero-title">`.
-- **Subheadings**: Use `Inter`. Keep it descriptive and clean.
+- **`Navbar`** — Floating pill header.
+  - `position: fixed`, `top: 1rem`, `border-radius: 16px`, `max-width: 1800px`
+  - Nav links: `DM Sans`, `0.95rem`, weight 500
+  - CTA button (`.btn-yellow`): `background: var(--accent-gold)`, `border-radius: 9999px`
 
-### C. UI Elements
-- **`Button`**:
-  - *Modifiers:* `rounded-pill` class is heavily encouraged for the modernized UI.
-  - *Variants:* `btn-primary` (Red/Gold depending on theme), `btn-outline` (Transparent).
+- **`Footer`** — Floating dark card at bottom of page.
+  - `background: var(--footer-bg)` (`#1A1A1A`)
+  - `border-radius: 24px`, `max-width: 1800px`, matches CardSection width
+  - Contains brand CTA, social links, and legal links.
 
-### D. Layout Patterns
-- **Stats Blocks**: Used in Achievements to show big text values. 
-- **Side-by-Side (Split) Cards**: Used in About Us / Vision. Text on one side, large rounded image on the other.
+### B. UI Elements
 
-## 4. Implementation Guidelines
+- **Buttons (`.btn`)**:
+  - Base: `border-radius: 9999px` (pill), `DM Sans`, no uppercase
+  - `.btn-primary` — Orange background (`--accent-gold`), white text
+  - `.btn-outline` / `.hero-btn-outline` — Transparent, orange border + text (in Hero)
+  - `.btn-yellow` — Navbar CTA, pill-shaped orange button
 
-### New Page Creation Workflow
-1. **Import `CardSection`.**
-2. **Add Header:** Use `section-title` class inside your layout grid.
-3. **Add Content:** Align elements in a grid or flex row depending on content. Apply smooth `border-radius: 24px` or `20px` to internal massive images to match the main card layout accurately.
-4. **Style:** Do **not** write new CSS files unless absolutely necessary. Rely on the `CardSection` spacing.
+- **Section Headings (`.about-section-heading`)**:
+  - `font-size: 3.5rem`, `font-weight: 700`, `letter-spacing: -1.5px`
+  - Has a gold `::after` underline bar: `60px × 4px`, `background: var(--accent-gold)`
+  - Used in: About Us, Our Vision cards
 
-## 5. Directory Structure
+### C. Layout Patterns
+
+| Pattern | Usage | Implementation |
+| :--- | :--- | :--- |
+| **Split (50/50)** | About Us, Our Vision | CSS Grid `1fr 1fr`, `gap: 5rem`, image `border-radius: 20px` |
+| **Split Reversed** | Our Vision | Add class `.about-content-layout--reverse` |
+| **Stats Row** | Achievements section | Flex row, 4 stat items, big `4rem` value + `0.9rem` label |
+| **Centered Hero** | Full-width intro | Two column: title left, buttons/subtitle right |
+| **Scrolling Ribbon** | Between Footer & body | Infinite scroll marquee, `DM Sans`, `background: var(--accent-gold)` |
+
+---
+
+## 4. Page Content (Landing Page)
+
+### Hero
+- Title: *"Innovation & entrepreneurship"*
+- Subtitle: *"Create, innovate, and inspire. Transforming students into future leaders..."*
+- Buttons: `Get Started →` (primary), `Free trial` (outline)
+- Image: Wide full-card photo of students collaborating
+
+### Achievements (Card 2)
+- Star badge: `★★★★★ 5.0/5 rating`
+- Title: *"We are passionate about empowering individuals and businesses..."*
+- Stats Row: `15+`, `50+`, `500+`, `$50k`
+
+### About Us (Card 3)
+- Image on left, text on right
+- Title: **"About Us"** with gold underline
+- Body: Full 2-paragraph text of IEDC CCE's mission
+
+### Our Vision (Card 4)
+- Text on left, image on right
+- Title: **"Our Vision"** with gold underline
+- Body: Full 2-paragraph vision text
+
+---
+
+## 5. Smooth Scrolling
+- Library: **Lenis** (`npm install lenis`)
+- Initialized in `App.jsx` using `useEffect` + `requestAnimationFrame`
+- CSS applied in `index.css` via `.lenis.lenis-smooth`, `html.lenis` classes
+
+---
+
+## 6. Directory Structure
 ```
 src/
   components/
     common/          <-- REUSABLE ATOMS
-      CardSection.jsx
-    layout/
-      Navbar.jsx
-      Footer.jsx
-    features/        <-- COMPLEX COMPOSITIONS
-      Hero.jsx
-      Achievements.jsx
-      AboutSection.jsx
+      CardSection.jsx / CardSection.css
+      ScrollingRibbon.jsx / ScrollingRibbon.css
+    Navbar.jsx / Navbar.css
+    Footer.jsx / Footer.css
+    Hero.jsx / Hero.css
+    Achievements.jsx / Achievements.css
+    AboutSection.jsx / AboutSection.css
+  context/
+    ThemeContext.jsx
+  pages/
+    ActivitiesPage, ContactPage, TBIPage, etc.
+  index.css   <-- Global tokens, Lenis classes, base styles
+  App.jsx     <-- Routing, Lenis init
 ```
 
 ---
-*Adhere to this architecture to ensure the codebase remains clean as the site grows.*
+
+*Adhere to this architecture to ensure the codebase remains clean and scalable as the site grows.*
