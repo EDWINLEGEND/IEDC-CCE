@@ -1,70 +1,85 @@
-
 import React from 'react';
-import { FileText, Calendar, ArrowRight } from 'lucide-react';
+import CardSection from '../components/common/CardSection';
 import './ActivitiesPage.css';
+import { FileText, Calendar, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const ActivitiesPage = () => {
     const reports = [
-        { year: '2022-2023', link: 'https://docs.google.com/document/d/1YWzcHlRNvy-vZacnjVBZlkgmJxPgueOPSbKsJrarfZ4/edit?usp=sharing' },
-        { year: '2021-2022', link: 'https://drive.google.com/file/d/14m_15U75wi752UBVDmQyyNWgzHFPFHH5/view?usp=sharing' },
-        { year: '2020-2021', link: 'https://drive.google.com/file/d/1w8_I3hFuaxtq0FOYDnF-HJnzVL2FxBC8/view?usp=sharing' },
-        { year: '2019-2020', link: 'https://drive.google.com/file/d/1vM4EmrjKcrgUBBkMnXcGiJWl8TnuHqY7/view?usp=sharing' },
-        { year: '2016-2017', link: 'https://drive.google.com/file/d/18phBD_nkgIdEKGPSjERk4kKasTb4QbX_/view?usp=sharing' },
+        { year: '2022-2023', link: 'https://docs.google.com/document/d/1YWzcHlRNvy-vZacnjVBZlkgmJxPgueOPSbKsJrarfZ4' },
+        { year: '2021-2022', link: 'https://drive.google.com/file/d/14m_15U75wi752UBVDmQyyNWgzHFPFHH5' },
+        { year: '2020-2021', link: 'https://drive.google.com/file/d/1w8_I3hFuaxtq0FOYDnF-HJnzVL2FxBC8' },
+        { year: '2019-2020', link: 'https://drive.google.com/file/d/1vM4EmrjKcrgUBBkMnXcGiJWl8TnuHqY7' },
+        { year: '2016-2017', link: 'https://drive.google.com/file/d/18phBD_nkgIdEKGPSjERk4kKasTb4QbX_' },
     ];
 
     return (
-        <div className="activities-page container">
-            <h1 className="page-title gradient-text">Activities & Reports</h1>
-
-            <section className="reports-section">
-                <h2 className="section-subtitle"><FileText size={24} /> Annual Reports</h2>
-                <div className="reports-grid">
-                    {reports.map((report, index) => (
-                        <a key={index} href={report.link} target="_blank" rel="noopener noreferrer" className="report-card glass">
-                            <div className="report-icon">
-                                <FileText size={40} />
-                            </div>
-                            <div className="report-info">
-                                <h3>Activity Report</h3>
-                                <span className="report-year">{report.year}</span>
-                            </div>
-                            <div className="report-arrow">
-                                <ArrowRight size={20} />
-                            </div>
-                        </a>
-                    ))}
+        <div style={{ paddingTop: '8rem' }}>
+            <CardSection>
+                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                    <h2 className="about-section-heading" style={{ display: 'inline-block', marginBottom: '0' }}>Activities & Reports</h2>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}>Explore our annual reports and recent events</p>
                 </div>
-            </section>
 
-            <section className="events-section">
-                <h2 className="section-subtitle"><Calendar size={24} /> Recent Events</h2>
-                <div className="events-grid">
-                    {/* Placeholders for events */}
-                    <div className="event-card glass">
-                        <div className="event-date">
-                            <span className="day">15</span>
-                            <span className="month">MAR</span>
-                        </div>
-                        <div className="event-details">
-                            <h3>Idea Pitching Competition</h3>
-                            <p>Showcase your innovative ideas and win exciting prizes.</p>
-                            <button className="btn-sm">Read More</button>
+                <div className="activities-grid">
+
+                    {/* Reports Column */}
+                    <div>
+                        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                            <FileText size={28} color="var(--accent-gold)" /> Annual Reports
+                        </h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            {reports.map((report, index) => (
+                                <a key={index} href={report.link} target="_blank" rel="noopener noreferrer" className="report-list-item">
+                                    <div className="report-icon-bg">
+                                        <FileText size={24} color="var(--accent-gold)" />
+                                    </div>
+                                    <div style={{ flexGrow: 1 }}>
+                                        <h4 style={{ fontSize: '1.2rem', fontWeight: '600', color: 'var(--text-primary)' }}>Activity Report</h4>
+                                        <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{report.year}</span>
+                                    </div>
+                                    <ArrowRight size={20} color="var(--text-secondary)" className="arrow-icon" />
+                                </a>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="event-card glass">
-                        <div className="event-date">
-                            <span className="day">22</span>
-                            <span className="month">FEB</span>
-                        </div>
-                        <div className="event-details">
-                            <h3>Workshop on IoT</h3>
-                            <p>Hands-on workshop on Internet of Things using Arduino.</p>
-                            <button className="btn-sm">Read More</button>
+                    {/* Events Column */}
+                    <div>
+                        <h3 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                            <Calendar size={28} color="var(--accent-gold)" /> Recent Events
+                        </h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
+                            <div className="event-list-item">
+                                <div className="event-date-box">
+                                    <span style={{ fontSize: '2rem', fontWeight: '700', lineHeight: '1', color: 'var(--accent-gold)' }}>15</span>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-secondary)' }}>MAR</span>
+                                </div>
+                                <div>
+                                    <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Idea Pitching Competition</h4>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>Showcase your innovative ideas and win exciting prizes.</p>
+                                    <button className="btn btn-outline rounded-pill" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>Read More</button>
+                                </div>
+                            </div>
+
+                            <div className="event-list-item">
+                                <div className="event-date-box">
+                                    <span style={{ fontSize: '2rem', fontWeight: '700', lineHeight: '1', color: 'var(--accent-gold)' }}>22</span>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-secondary)' }}>FEB</span>
+                                </div>
+                                <div>
+                                    <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Workshop on IoT</h4>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>Hands-on workshop on Internet of Things using Arduino.</p>
+                                    <button className="btn btn-outline rounded-pill" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>Read More</button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
-            </section>
+            </CardSection>
         </div>
     );
 };

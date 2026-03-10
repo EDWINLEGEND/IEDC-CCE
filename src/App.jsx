@@ -17,11 +17,17 @@ import ScrollingRibbon from './components/common/ScrollingRibbon';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
 
+import CardSection from './components/common/CardSection';
+
 // Simple placeholder for pages not fully implemented
 const PlaceholderPage = ({ title }) => (
-  <div className="container" style={{ padding: '8rem 2rem', textAlign: 'center', minHeight: '60vh' }}>
-    <h1 className="gradient-text" style={{ fontSize: '3rem', marginBottom: '1rem' }}>{title}</h1>
-    <p style={{ color: 'var(--text-secondary)' }}>Content coming soon...</p>
+  <div style={{ paddingTop: '8rem' }}>
+    <CardSection>
+      <div style={{ padding: '4rem 2rem', textAlign: 'center', minHeight: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '4rem', marginBottom: '1rem', color: 'var(--text-primary)', letterSpacing: '-1.5px', fontWeight: '700' }}>{title}</h1>
+        <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>Content coming soon...</p>
+      </div>
+    </CardSection>
   </div>
 );
 

@@ -1,8 +1,5 @@
-
 import React from 'react';
-import SectionTitle from '../components/common/SectionTitle';
-import PageContainer from '../components/common/PageContainer';
-import Section from '../components/common/Section';
+import CardSection from '../components/common/CardSection';
 import { motion } from 'framer-motion';
 
 const categories = [
@@ -13,46 +10,55 @@ const categories = [
 
 const HobbyHubPage = () => {
     return (
-        <PageContainer>
-            <Section>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <SectionTitle title="HOBBYHUB STORE" align="center" />
-                    <div className="tbi-underline" style={{ margin: '0 auto 1rem' }}></div>
-                    <p className="hero-subtitle" style={{ color: 'var(--accent-gold)', marginBottom: '4rem' }}>A HOBBYHUB INITIATIVE</p>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
-                        {categories.map((cat, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: index * 0.2 }}
-                                style={{ position: 'relative', height: '400px', borderRadius: '12px', overflow: 'hidden' }}
-                            >
-                                <div style={{
-                                    position: 'absolute', inset: 0,
-                                    backgroundImage: `url(${cat.image})`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    filter: 'brightness(0.6)'
-                                }}></div>
-                                <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '2rem' }}>
-                                    <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3rem', color: 'white', margin: 0 }}>{cat.name}</h2>
-                                    <p style={{ fontFamily: 'var(--font-body)', color: 'var(--accent-gold)', fontSize: '1.2rem', marginTop: '0.5rem' }}>{cat.subtitle}</p>
-                                    <button className="btn btn-outline" style={{ marginTop: '2rem' }}>VIEW PRODUCTS</button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <div style={{ marginTop: '6rem' }}>
-                        <SectionTitle title="ALL PRODUCTS" align="center" />
-                        <p style={{ color: 'var(--text-secondary)' }}>Full catalog coming soon...</p>
-                    </div>
+        <div style={{ paddingTop: '8rem' }}>
+            <CardSection>
+                <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
+                    <h2 className="about-section-heading" style={{ display: 'inline-block', marginBottom: '0' }}>HOBBYHUB STORE</h2>
+                    <p style={{ color: 'var(--accent-gold)', fontSize: '1.2rem', marginTop: '1rem', fontWeight: '600' }}>A HOBBYHUB INITIATIVE</p>
                 </div>
-            </Section>
-        </PageContainer>
+
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
+                    {categories.map((cat, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: index * 0.1 }}
+                            style={{
+                                position: 'relative',
+                                height: '450px',
+                                borderRadius: '24px',
+                                overflow: 'hidden',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'flex-end',
+                                boxShadow: 'var(--card-shadow)'
+                            }}
+                        >
+                            <div style={{
+                                position: 'absolute', inset: 0,
+                                backgroundImage: `url(${cat.image})`,
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                filter: 'brightness(0.7)'
+                            }}></div>
+
+                            <div style={{ position: 'relative', zIndex: '2', padding: '3rem 2rem', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
+                                <h3 style={{ fontFamily: 'var(--font-heading)', fontSize: '2.5rem', color: 'white', margin: '0 0 0.5rem', fontWeight: '700', letterSpacing: '-1px' }}>{cat.name}</h3>
+                                <p style={{ fontFamily: 'var(--font-body)', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem', marginBottom: '2rem' }}>{cat.subtitle}</p>
+                                <button className="btn btn-outline rounded-pill" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.4)' }}>VIEW PRODUCTS</button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <div style={{ marginTop: '6rem', textAlign: 'center', padding: '4rem', background: '#f8f8fb', borderRadius: '24px', border: '1px solid var(--border-color)' }}>
+                    <h3 style={{ fontSize: '2rem', fontWeight: '700', marginBottom: '1rem', color: 'var(--text-primary)' }}>ALL PRODUCTS</h3>
+                    <p style={{ color: 'var(--text-secondary)' }}>Full catalog coming soon...</p>
+                </div>
+            </CardSection>
+        </div>
     );
 };
 

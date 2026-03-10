@@ -1,8 +1,5 @@
-
 import React from 'react';
-import SectionTitle from '../components/common/SectionTitle';
-import PageContainer from '../components/common/PageContainer';
-import Section from '../components/common/Section';
+import CardSection from '../components/common/CardSection';
 import { motion } from 'framer-motion';
 
 const products = [
@@ -20,42 +17,57 @@ const products = [
 
 const EngraversPage = () => {
     return (
-        <PageContainer>
-            <Section>
-                <div className="container" style={{ textAlign: 'center' }}>
-                    <SectionTitle title="ENGRAVERS" align="center" />
-                    <div className="tbi-underline" style={{ margin: '0 auto 2rem' }}></div>
-                    <p className="hero-subtitle" style={{ color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 4rem' }}>
-                        Engravers is a 3D designing and printing consultancy started by an innovative young team of IEDC Centre ,Christ College of Engineering. This consultancy gives technical solution using creative possibilities of 3D printing. The vibrant team of Engravers is led by Rahul Manohar from the faculty side and Sreehari Babu from the student side who is also the CEO of IEDC Centre.
+        <div style={{ paddingTop: '8rem' }}>
+            <CardSection>
+                <div style={{ textAlign: 'center', marginBottom: '5rem', maxWidth: '900px', margin: '0 auto 5rem' }}>
+                    <h2 className="about-section-heading" style={{ display: 'inline-block', marginBottom: '0' }}>ENGRAVERS</h2>
+                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '2rem', lineHeight: '1.7' }}>
+                        Engravers is a 3D designing and printing consultancy started by an innovative young team of IEDC Centre, Christ College of Engineering. This consultancy gives technical solution using creative possibilities of 3D printing. The vibrant team of Engravers is led by Rahul Manohar from the faculty side and Sreehari Babu from the student side who is also the CEO of IEDC Centre.
                     </p>
+                </div>
 
-                    <SectionTitle title="PRODUCTS" align="center" className="mb-12" />
+                <div style={{ padding: '0 2rem' }}>
+                    <h3 style={{ fontSize: '2.5rem', fontWeight: '700', marginBottom: '3rem', color: 'var(--text-primary)', textAlign: 'center' }}>PRODUCTS</h3>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '2rem', padding: '2rem 0' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
                         {products.map((product, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                className="product-card"
-                                style={{ background: 'var(--bg-secondary)', borderRadius: '8px', overflow: 'hidden', textAlign: 'left' }}
+                                transition={{ delay: index * 0.05 }}
+                                style={{
+                                    background: '#f8f8fb',
+                                    borderRadius: '20px',
+                                    overflow: 'hidden',
+                                    border: '1px solid var(--border-color)',
+                                    display: 'flex',
+                                    flexDirection: 'column'
+                                }}
                             >
-                                <div style={{ height: '200px', overflow: 'hidden' }}>
-                                    <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(100%)', transition: 'filter 0.3s' }}
-                                        onMouseOver={e => e.target.style.filter = 'grayscale(0%)'}
-                                        onMouseOut={e => e.target.style.filter = 'grayscale(100%)'}
+                                <div style={{ height: '240px', overflow: 'hidden' }}>
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                        }}
                                     />
                                 </div>
-                                <div style={{ padding: '1.5rem' }}>
-                                    <h3 style={{ fontFamily: 'var(--font-heading)', color: 'white', fontSize: '1.5rem' }}>{product.name}</h3>
+                                <div style={{ padding: '2rem', flexGrow: 1, display: 'flex', alignItems: 'center' }}>
+                                    <h3 style={{ fontFamily: 'var(--font-heading)', color: 'var(--text-primary)', fontSize: '1.5rem', fontWeight: '700', margin: 0 }}>
+                                        {product.name}
+                                    </h3>
                                 </div>
                             </motion.div>
                         ))}
                     </div>
                 </div>
-            </Section>
-        </PageContainer>
+            </CardSection>
+        </div>
     );
 };
 
