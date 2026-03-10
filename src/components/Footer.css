@@ -10,6 +10,7 @@
     width: calc(100% - 2rem);
     box-sizing: border-box;
     box-shadow: var(--card-shadow);
+    border: 10px solid var(--thick-border);
 }
 
 .footer-top {

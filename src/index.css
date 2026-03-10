@@ -15,9 +15,12 @@
   --card-bg: #ffffff;
   /* Pure white card to contrast light beige page */
   --card-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.04), 0 4px 10px rgba(0, 0, 0, 0.015);
+  --thick-border: #E8EBF5;
+  /* Soft modern lavender-gray border to match the reference images beautifully */
   --footer-bg: #1A1A1A;
   --footer-text: #ffffff;
   --footer-border: rgba(255, 255, 255, 0.08);
+
 
   --scrollbar-thumb: #9ca3af;
   --scrollbar-track: #f3f4f6;
@@ -45,6 +48,9 @@
   --nav-scrolled-bg: rgba(10, 10, 10, 0.95);
   --card-bg: #141414;
   --card-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  --thick-border: rgba(0, 0, 0, 0.6);
+  /* very dark, almost imperceptible shadow or black border */
+
   --scrollbar-thumb: #4b5563;
   --scrollbar-track: #0a0a0a;
 }
