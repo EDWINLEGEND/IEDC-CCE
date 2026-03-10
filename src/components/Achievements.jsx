@@ -11,27 +11,27 @@ const achievements = [
 
 const Achievements = () => {
     return (
-        <CardSection className="achievements-section" id="achievements">
+        <CardSection id="achievements">
             <div className="achievements-content">
-                <div className="achievements-header" style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', borderBottom: 'none' }}>
-                    <div style={{ flex: '0.4' }}>
-                        <div className="star-rating" style={{ display: 'inline-block', backgroundColor: '#fff', padding: '0.5rem 1rem', borderRadius: '50px', fontSize: '0.85rem', fontWeight: '600', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-                            <span style={{ color: '#fcb900', marginRight: '5px' }}>★★★★★</span>
-                            <span style={{ color: 'var(--text-secondary)' }}>5.0/5 rating</span>
+                <div className="achievements-top-row">
+                    <div className="achievements-rating-col">
+                        <div className="ach-star-rating">
+                            <span className="ach-stars">★★★★★</span>
+                            <span className="ach-rating-text">5.0/5 rating</span>
                         </div>
                     </div>
-                    <div style={{ flex: '1.2' }}>
-                        <h2 className="section-title title-light" style={{ fontSize: '3.5rem', fontWeight: '500', lineHeight: '1.05', textTransform: 'none', letterSpacing: '-1.5px', margin: '0' }}>
-                            We are passionate about empowering individuals and <span style={{ color: 'var(--text-secondary)' }}>businesses to take control of their finances and achieve their financial goals.</span>
+                    <div className="achievements-title-col">
+                        <h2 className="ach-section-title">
+                            We are passionate about empowering individuals and <span className="ach-text-muted">businesses to take control of their finances and achieve their financial goals.</span>
                         </h2>
                     </div>
                 </div>
 
-                <div className="achievements-stats" style={{ borderTop: 'none', marginTop: '3.5rem', padding: '0' }}>
+                <div className="achievements-stats-row">
                     {achievements.map((item) => (
-                        <div className="stat-item" key={item.id} style={{ maxWidth: '280px' }}>
-                            <h3 className="stat-value" style={{ color: 'var(--text-primary)', fontSize: '4rem', fontWeight: '500', letterSpacing: '-2px' }}>{item.value}</h3>
-                            <p className="stat-label" style={{ fontSize: '0.9rem', lineHeight: '1.6', color: 'var(--text-secondary)' }}>{item.title}</p>
+                        <div className="ach-stat-item" key={item.id}>
+                            <h3 className="ach-stat-value">{item.value}</h3>
+                            <p className="ach-stat-label">{item.title}</p>
                         </div>
                     ))}
                 </div>

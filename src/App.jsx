@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Achievements from './components/Achievements';
+import RecentEvents from './components/RecentEvents';
 import AboutSection from './components/AboutSection';
+import BentoFeatures from './components/BentoFeatures';
+import Excom from './components/Excom';
 import Footer from './components/Footer';
 import ActivitiesPage from './pages/ActivitiesPage';
 import ContactPage from './pages/ContactPage';
@@ -34,8 +37,11 @@ const PlaceholderPage = ({ title }) => (
 const Home = () => (
   <>
     <Hero />
-    <Achievements />
     <AboutSection />
+    <BentoFeatures />
+    <RecentEvents />
+    <Achievements />
+    <Excom />
   </>
 );
 
