@@ -1,17 +1,17 @@
 .scrolling-ribbon-container {
+    position: relative;
     width: 100%;
     overflow: hidden;
     background-color: var(--accent-gold);
-    /* Default Yellow */
     color: black;
-    padding: 1rem 0;
+    padding: 1.2rem 0;
     white-space: nowrap;
     display: flex;
-    position: relative;
     cursor: default;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-top: 1px solid transparent;
     border-bottom: 1px solid transparent;
+    z-index: 10;
 }
 
 .scrolling-ribbon-container:hover {

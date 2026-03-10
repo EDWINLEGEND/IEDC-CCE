@@ -155,12 +155,14 @@
     align-items: center;
     justify-content: center;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0), visibility 0.4s;
     z-index: 999;
 }
 
 .mobile-menu.active {
     transform: translateX(0);
+    visibility: visible;
 }
 
 .mobile-nav-links {
