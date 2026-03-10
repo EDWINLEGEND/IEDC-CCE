@@ -37,8 +37,8 @@ const PlaceholderPage = ({ title }) => (
 const Home = () => (
   <>
     <Hero />
-    <AboutSection />
     <BentoFeatures />
+    <AboutSection />
     <RecentEvents />
     <Achievements />
     <Excom />

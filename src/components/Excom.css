@@ -2,36 +2,44 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 2rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
-.nodal-card {
-    height: 550px;
-    flex: 1.2;
+.excom-photo-card.nodal-card {
+    width: 240px;
+    max-width: 100%;
+    height: auto;
+    flex: none;
 }
 
 .excom-top-right {
     display: flex;
-    flex: 2;
     gap: 1.5rem;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.ceo-card,
-.co-ceo-card {
-    height: 450px;
-    flex: 1;
+.excom-photo-card.ceo-card,
+.excom-photo-card.co-ceo-card {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    flex: none;
 }
 
 .excom-bottom-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .other-card {
-    height: 400px;
+    height: auto;
 }
 
 /* Base Photo Card Styles */
@@ -40,6 +48,7 @@
     border-radius: 24px;
     overflow: hidden;
     width: 100%;
+    aspect-ratio: 3 / 4;
     transition: transform 0.4s ease;
     background-color: var(--card-bg);
     /* fallback */
@@ -80,25 +89,25 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 2rem;
+    padding: 1.25rem;
     z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 /* Larger padding for the big left card */
 .nodal-card .excom-photo-content {
-    padding: 3rem;
+    padding: 2rem;
 }
 
 .excom-photo-role {
     background-color: #ffffff;
     color: #111111;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 0.5rem 1.25rem;
+    padding: 0.4rem 1rem;
     border-radius: 50px;
     font-family: var(--font-body);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -106,7 +115,7 @@
 
 .excom-photo-name {
     color: #ffffff;
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-weight: 500;
     font-family: var(--font-heading);
     line-height: 1.1;
@@ -116,28 +125,17 @@
 
 /* Larger text for Nodal */
 .nodal-card .excom-photo-name {
-    font-size: 3rem;
+    font-size: 1.6rem;
 }
 
 @media (max-width: 1024px) {
-    .excom-top-section {
-        flex-direction: column;
+    .excom-photo-card.nodal-card {
+        width: 220px;
     }
 
-    .nodal-card {
-        height: 500px;
-        width: 100%;
-    }
-
-    .excom-top-right {
-        width: 100%;
-        display: flex;
-    }
-
-    .ceo-card,
-    .co-ceo-card {
-        height: 400px;
-        flex: 1;
+    .excom-photo-card.ceo-card,
+    .excom-photo-card.co-ceo-card {
+        width: 180px;
     }
 
     .excom-bottom-grid {
@@ -146,22 +144,28 @@
 }
 
 @media (max-width: 768px) {
-    .excom-top-right {
+    .excom-top-section {
         flex-direction: column;
     }
 
-    .ceo-card,
-    .co-ceo-card {
-        height: 400px;
+    .excom-photo-card.nodal-card {
         width: 100%;
+        max-width: 400px;
+    }
+
+    .excom-top-right {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .excom-photo-card.ceo-card,
+    .excom-photo-card.co-ceo-card {
+        width: 100%;
+        max-width: 320px;
     }
 
     .excom-bottom-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .other-card {
-        height: 350px;
     }
 
     .excom-photo-content {
