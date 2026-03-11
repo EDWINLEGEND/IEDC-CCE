@@ -1,6 +1,6 @@
 import React from 'react';
 import CardSection from './common/CardSection';
-import { Search, Code, Users, Lightbulb, TrendingUp, Send } from 'lucide-react';
+import { Search, Code, Users, Lightbulb, TrendingUp, MonitorPlay } from 'lucide-react';
 import './BentoFeatures.css';
 
 const BentoFeatures = () => {
@@ -13,7 +13,7 @@ const BentoFeatures = () => {
                 </h2>
                 <div className="bento-search-bar">
                     <Search size={20} className="search-icon" />
-                    <input type="text" placeholder="I'm looking for..." className="search-input" />
+                    <input type="text" placeholder="I'm looking for incubators, labs, or mentorship..." className="search-input" />
                     <button className="search-btn">Search</button>
                 </div>
             </div>
@@ -22,30 +22,34 @@ const BentoFeatures = () => {
 
                 {/* Column 1 */}
                 <div className="bento-col bento-col-1">
-                    <div className="bento-box box-tech">
-                        <div className="box-header">
-                            <Code size={18} />
-                            <span>Learn to Build</span>
-                        </div>
-                        <div className="pill-cloud">
-                            <span className="pill p-1">Web Dev</span>
-                            <span className="pill p-2">AI Agents</span>
-                            <span className="pill p-3">IoT Projects</span>
-                            <span className="pill p-4">UI/UX</span>
-                            <span className="pill p-5">App Builder</span>
+                    <div className="bento-box box-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Teamwork" className="box-bg-img" />
+                        <div className="box-overlay">
+                            <div className="box-header-glass">
+                                <Users size={16} /> <span>Peer Mentorship</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="bento-box box-community">
-                        <div className="box-header">
-                            <Users size={18} />
-                            <span>Talk with Mentors</span>
+                    <div className="bento-box box-funding">
+                        <div className="box-header-dark">
+                            <TrendingUp size={16} /> <span>Grants & Funding</span>
                         </div>
-                        <div className="community-mockup">
-                            <div className="mock-line line-1"></div>
-                            <div className="mock-line line-2"></div>
-                            <div className="mock-line line-3"></div>
-                            <div className="community-avatar">👋</div>
+                        <div className="funding-content">
+                            <h3 className="huge-number text-gold">₹50L+</h3>
+                            <p className="sub-text">Disbursed to student startups</p>
+                            <div className="chart-wrapper">
+                                <svg className="mock-chart" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                    <path d="M0,30 L10,25 L20,28 L30,15 L40,20 L50,10 L60,15 L70,5 L80,10 L90,2 L100,5" fill="none" stroke="var(--accent-gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    <path d="M0,30 L10,25 L20,28 L30,15 L40,20 L50,10 L60,15 L70,5 L80,10 L90,2 L100,5 L100,30 L0,30 Z" fill="url(#goldGradient)" opacity="0.2" />
+                                    <defs>
+                                        <linearGradient id="goldGradient" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stopColor="var(--accent-gold)" />
+                                            <stop offset="100%" stopColor="transparent" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -54,9 +58,10 @@ const BentoFeatures = () => {
                 <div className="bento-col bento-col-2">
                     <div className="bento-box box-explorers">
                         <div className="avatar-stack">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=A" alt="Avatar" />
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=B" alt="Avatar" />
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=C" alt="Avatar" />
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=b6e3f4" alt="Avatar" />
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Aneka&backgroundColor=ffdfbf" alt="Avatar" />
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John&backgroundColor=c0aede" alt="Avatar" />
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Doe&backgroundColor=d1d4f9" alt="Avatar" />
                         </div>
                         <div className="explorers-content">
                             <div>
@@ -67,27 +72,62 @@ const BentoFeatures = () => {
                         </div>
                     </div>
 
-                    <div className="bento-box box-ideas">
-                        <div className="box-header">
-                            <Lightbulb size={18} />
-                            <span>Look What I Made</span>
+                    <div className="bento-box box-app flex-grow">
+                        <div className="box-header-dark" style={{ marginBottom: '1.5rem' }}>
+                            <MonitorPlay size={16} /> <span>Prototyping Labs</span>
                         </div>
-                        <div className="share-input-mock">
-                            <span className="placeholder-text">Share idea...</span>
-                            <button className="send-btn"><Send size={14} color="#fff" /></button>
+                        <div className="app-mockup">
+                            <div className="app-row">
+                                <div className="app-icon icon-3d">🛠️</div>
+                                <div className="app-text">
+                                    <strong>3D Printing</strong>
+                                    <span>Available 24/7 in FabLab</span>
+                                </div>
+                                <div className="app-action">→</div>
+                            </div>
+                            <div className="app-row">
+                                <div className="app-icon icon-iot">🔌</div>
+                                <div className="app-text">
+                                    <strong>IoT & Hardware</strong>
+                                    <span>Dev Kits & Sensors</span>
+                                </div>
+                                <div className="app-action">→</div>
+                            </div>
+                            <div className="app-row">
+                                <div className="app-icon icon-server">☁️</div>
+                                <div className="app-text">
+                                    <strong>Cloud Credits</strong>
+                                    <span>AWS & Google Cloud</span>
+                                </div>
+                                <div className="app-action">→</div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Column 3 */}
                 <div className="bento-col bento-col-3">
-                    <div className="bento-box box-magic">
-                        <div className="box-header">
-                            <TrendingUp size={18} />
-                            <span>Make It Big!</span>
+                    <div className="bento-box box-tech">
+                        <div className="box-header-dark">
+                            <Code size={16} /> <span>Focus Areas</span>
                         </div>
-                        <div className="magic-illustration">
-                            <div className="blob">🚀</div>
+                        <div className="pill-cloud">
+                            <span className="pill">Web Dev</span>
+                            <span className="pill">AI & ML</span>
+                            <span className="pill">FinTech</span>
+                            <span className="pill">UI/UX</span>
+                            <span className="pill">Robotics</span>
+                            <span className="pill">AR/VR</span>
+                            <span className="pill">App Dev</span>
+                        </div>
+                    </div>
+
+                    <div className="bento-box box-image flex-grow">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80" alt="State of the Art Labs" className="box-bg-img" />
+                        <div className="box-overlay bottom">
+                            <div className="box-header-glass">
+                                <Lightbulb size={16} /> <span>State-of-the-Art Facilities</span>
+                            </div>
                         </div>
                     </div>
                 </div>

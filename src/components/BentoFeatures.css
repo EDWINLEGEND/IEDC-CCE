@@ -26,7 +26,7 @@
     border: 1px solid var(--border-color);
     border-radius: 50px;
     padding: 0.5rem 0.5rem 0.5rem 1.5rem;
-    width: 550px;
+    width: 650px;
     max-width: 90%;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
     color: var(--text-secondary);
@@ -61,9 +61,9 @@
 /* Grid System */
 .bento-grid-complex {
     display: grid;
-    grid-template-columns: 1.2fr 1fr 1fr;
+    grid-template-columns: 1fr 1.2fr 1fr;
     gap: 1.5rem;
-    min-height: 500px;
+    min-height: 600px;
 }
 
 .bento-col {
@@ -79,10 +79,31 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.box-header {
+.flex-grow {
+    flex-grow: 1;
+}
+
+/* Base Headers */
+.box-header-glass {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-family: var(--font-heading);
+    color: #111;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    align-self: flex-start;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    backdrop-filter: blur(10px);
+}
+
+.box-header-dark {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -97,47 +118,90 @@
     z-index: 2;
 }
 
-/* Specific Box Colors */
+/* Specific Box Backgrounds */
 .box-tech {
-    background-color: #1a1a1a;
+    background-color: #1c1c1c;
     color: #ffffff;
-    border-color: #333333;
-    flex: 1.2;
 }
 
-.box-community {
+.box-funding {
     background-color: #2F231A;
-    color: #F8EFE0;
-    border-color: #4A3A2D;
-    flex: 1;
+    color: #ffffff;
     justify-content: space-between;
+    flex-grow: 1;
 }
 
 .box-explorers {
     background-color: var(--accent-gold);
     color: #ffffff;
     border-color: var(--accent-gold);
-    flex: 1.5;
-    justify-content: space-between;
 }
 
-.box-ideas {
-    background-color: #26211E;
+.box-app {
+    background-color: #222222;
     color: #ffffff;
-    border-color: #423b36;
-    flex: 1;
-    justify-content: space-between;
 }
 
-.box-magic {
-    background-color: #0f0f0f;
-    color: #ffffff;
-    border-color: #222222;
-    flex: 1;
+.box-image {
+    padding: 0;
+    min-height: 250px;
+}
+
+.box-bg-img {
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
 }
 
-/* Pill Cloud in Tech Box */
+.box-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    /* Subtle inner shadow for text readability */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 40%);
+}
+
+.box-overlay.bottom {
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 40%);
+}
+
+/* Funding & Chart */
+.funding-content {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.text-gold {
+    color: #F8EFE0;
+}
+
+.chart-wrapper {
+    margin-top: 1.5rem;
+    width: 100%;
+    height: 80px;
+}
+
+.mock-chart {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* Pill Cloud */
 .pill-cloud {
     display: flex;
     flex-wrap: wrap;
@@ -147,19 +211,25 @@
 }
 
 .pill {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.08);
     color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    font-weight: 600;
-    font-size: 0.8rem;
-    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 50px;
+    transition: background-color 0.2s;
+    cursor: default;
+}
+
+.pill:hover {
+    background-color: rgba(255, 255, 255, 0.15);
 }
 
 /* Explorers Box */
 .avatar-stack {
     display: flex;
-    margin-bottom: auto;
+    margin-bottom: 2rem;
 }
 
 .avatar-stack img {
@@ -169,6 +239,7 @@
     border: 2px solid var(--accent-gold);
     margin-left: -15px;
     background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .avatar-stack img:first-child {
@@ -179,7 +250,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    margin-top: 2rem;
+    margin-top: auto;
 }
 
 .huge-number {
@@ -195,6 +266,7 @@
     font-weight: 500;
     font-size: 0.95rem;
     opacity: 0.8;
+    margin-top: 0.5rem;
 }
 
 .white-pill-btn {
@@ -202,93 +274,86 @@
     color: var(--accent-gold);
     border: none;
     font-weight: 700;
-    padding: 0.6rem 1.5rem;
+    padding: 0.8rem 1.8rem;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
 }
 
-/* Mockups */
-.community-mockup {
+.white-pill-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* App Mockup Lists */
+.app-mockup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.app-row {
+    display: flex;
+    align-items: center;
     background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem;
     border-radius: 16px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mock-line {
-    height: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    margin-bottom: 0.8rem;
-}
-
-.line-1 {
-    width: 80%;
-}
-
-.line-2 {
-    width: 60%;
-}
-
-.line-3 {
-    width: 40%;
-}
-
-.community-avatar {
-    position: absolute;
-    bottom: -10px;
-    right: 10px;
-    font-size: 2.5rem;
-}
-
-.share-input-mock {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.placeholder-text {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.send-btn {
-    background: #ffffff;
-    color: #111111;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    transition: background-color 0.2s;
     cursor: pointer;
 }
 
-.magic-illustration {
-    flex: 1;
+.app-row:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.app-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
 }
 
-.blob {
-    font-size: 10rem;
-    transform: rotate(15deg);
-    transition: transform 0.5s ease;
+.icon-3d {
+    background: #332B47;
 }
 
-.box-magic:hover .blob {
-    transform: rotate(0deg) scale(1.1);
+.icon-iot {
+    background: #1B3D4A;
+}
+
+.icon-server {
+    background: #4A3A2D;
+}
+
+.app-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.app-text strong {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+}
+
+.app-text span {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 0.2rem;
+}
+
+.app-action {
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 @media (max-width: 1024px) {
@@ -298,6 +363,11 @@
 
     .bento-col-3 {
         grid-column: span 2;
+        flex-direction: row;
+    }
+
+    .bento-col-3 .bento-box {
+        flex: 1;
     }
 }
 
@@ -324,5 +394,6 @@
 
     .bento-col-3 {
         grid-column: span 1;
+        flex-direction: column;
     }
 }
