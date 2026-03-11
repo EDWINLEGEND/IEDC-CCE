@@ -1,46 +1,69 @@
 import React from 'react';
 import CardSection from './common/CardSection';
+import { Calendar, ArrowRight } from 'lucide-react';
 import './RecentEvents.css';
 
 const events = [
-    { id: 1, tag: "Startups & Funding", value: "15+", title: "Startups Incubated", desc: "Providing early stage support", img: "https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=600&q=80" },
-    { id: 2, tag: "Innovation Projects", value: "50+", title: "Active Projects", desc: "Driving groundbreaking industry insights", img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" },
-    { id: 3, tag: "Community Building", value: "500+", title: "Active Members", desc: "A reliable community of brilliant minds", img: "https://images.unsplash.com/photo-1540317580384-e5d43867caa6?auto=format&fit=crop&w=600&q=80" },
-    { id: 4, tag: "Financial Creation", value: "$50k", title: "Total Funding", desc: "Delivering streamlined processes", img: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=600&q=80" },
+    {
+        id: 1,
+        tag: "Summit",
+        date: "Oct 15, 2025",
+        title: "IEDC Annual Summit 2025",
+        desc: "A massive gathering of student entrepreneurs, investors, and industry experts for keynote sessions and networking.",
+        img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: 2,
+        tag: "Hackathon",
+        date: "Nov 02, 2025",
+        title: "Innovators Hack 48H",
+        desc: "A 48-hour hardware and software hackathon challenging students to build sustainable tech solutions.",
+        img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: 3,
+        tag: "Workshop",
+        date: "Nov 20, 2025",
+        title: "AI & ML Prototyping",
+        desc: "An intensive hands-on workshop focused on training and deploying machine learning models on edge devices.",
+        img: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+        id: 4,
+        tag: "Pitch Day",
+        date: "Dec 05, 2025",
+        title: "Seed Fund Pitch 2025",
+        desc: "Top 10 incubated student teams pitch their MVPs to a panel of angel investors and grant coordinators.",
+        img: "https://images.unsplash.com/photo-1556761175-5973dc0f32d7?auto=format&fit=crop&w=800&q=80"
+    },
 ];
 
 const RecentEvents = () => {
     return (
         <CardSection id="recent-events">
-            <div className="recent-events-gallery-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem' }}>
-                <h2 style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)', maxWidth: '800px', lineHeight: '1.1', letterSpacing: '-1.5px' }}>
-                    Recent Events
+            <div className="recent-events-gallery-header">
+                <h2 className="recent-events-title">
+                    Recent Events & Activities
                 </h2>
-                {/* Optional side button */}
-                <button className="btn btn-primary rounded-pill" style={{ padding: '0.8rem 1.8rem' }}>View All Events →</button>
+                <button className="btn btn-primary rounded-pill btn-view-events">
+                    View All Events <ArrowRight size={18} style={{ marginLeft: '5px' }} />
+                </button>
             </div>
 
-            {/* Horizontal scrolling gallery wrapper */}
             <div className="gallery-scroll-container">
                 {events.map((event) => (
-                    <div className="gallery-card" key={event.id}>
-                        {/* Event Image */}
-                        <div className="gallery-img-wrapper">
-                            <img src={event.img} alt={event.title} className="gallery-img" />
+                    <div className="event-gallery-card" key={event.id}>
+                        <div className="event-img-wrapper">
+                            <img src={event.img} alt={event.title} className="event-img" />
+                            <div className="event-tag">{event.tag}</div>
                         </div>
 
-                        {/* Event Stats */}
-                        <div className="gallery-stats-row">
-                            <h3 className="gallery-stat-value">{event.value}</h3>
-                            <div className="gallery-stat-desc">
-                                <strong>{event.title}</strong>
-                                <p>{event.desc}</p>
+                        <div className="event-content">
+                            <div className="event-date">
+                                <Calendar size={14} /> <span>{event.date}</span>
                             </div>
-                        </div>
-
-                        {/* Tag */}
-                        <div className="gallery-tag">
-                            {event.tag}
+                            <h3 className="event-title">{event.title}</h3>
+                            <p className="event-desc">{event.desc}</p>
                         </div>
                     </div>
                 ))}
