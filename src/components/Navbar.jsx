@@ -1,35 +1,29 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowUpRight } from 'lucide-react';
+import IEDCButton from './common/IEDCButton';
 import './Navbar.css';
 import { useTheme } from '../context/ThemeContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
-  const [visible, setVisible] = useState(true);
+  const [scrollY, setScrollY] = useState(0);
   const { theme, toggleTheme } = useTheme();
 
-  // ... (scroll effect logic remains same)
-
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
-      setPrevScrollPos(currentScrollPos);
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos]);
+  }, []);
+
+  const isScrolled = scrollY > 50;
 
   return (
-    <nav className={`navbar ${visible ? 'navbar-visible' : 'navbar-hidden'} ${prevScrollPos > 50 ? 'navbar-scrolled' : ''}`}>
+    <nav className={`navbar ${isScrolled ? 'navbar-scrolled' : ''}`}>
       <div className="container navbar-container">
 
-        {/* Logo Section */}
+        {/* Logo */}
         <div className="navbar-brand">
           <Link to="/" className="navbar-logo">
             <span className="logo-bold">IEDC</span>
@@ -37,7 +31,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Main Navigation - Desktop */}
+        {/* Desktop Nav Links */}
         <div className="nav-links-desktop">
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/activities" className="nav-link">Activities</Link>
@@ -67,38 +61,57 @@ const Navbar = () => {
           <Link to="/contact" className="nav-link">Contact Us</Link>
         </div>
 
-        {/* CTA Buttons - Desktop */}
+        {/* Desktop Actions */}
         <div className="nav-actions-desktop">
           <button
             className="theme-toggle-btn"
             onClick={toggleTheme}
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={20} color="gold" /> : <Moon size={20} color="black" />}
+            {theme === 'dark'
+              ? <Sun size={18} color="gold" />
+              : <Moon size={18} />}
           </button>
-          <button className="btn btn-yellow">JOIN IEDC</button>
+
+          <IEDCButton to="/contact" size="md" icon={<ArrowUpRight size={15} />}>
+            JOIN IEDC
+          </IEDCButton>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button className="menu-btn" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-          {isOpen ? <X size={28} className="nav-icon" /> : <Menu size={28} className="nav-icon" />}
+        {/* Mobile Hamburger */}
+        <button
+          className="menu-btn"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen
+            ? <X size={28} className="nav-icon" />
+            : <Menu size={28} className="nav-icon" />}
         </button>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Slide-in Menu */}
         <div className={`mobile-menu ${isOpen ? 'active' : ''}`}>
           <div className="mobile-nav-links">
             <Link to="/" onClick={() => setIsOpen(false)}>Home</Link>
             <Link to="/activities" onClick={() => setIsOpen(false)}>Activities</Link>
             <Link to="/ipl" onClick={() => setIsOpen(false)}>IPL 2.0</Link>
-            <Link to="/startups" onClick={() => setIsOpen(false)}>Startups</Link>
+            <Link to="/tbi" onClick={() => setIsOpen(false)}>Startups</Link>
             <Link to="/rules" onClick={() => setIsOpen(false)}>Rules</Link>
             <Link to="/nisp" onClick={() => setIsOpen(false)}>NISP</Link>
             <Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link>
             <div className="mobile-actions">
-              <button className="btn btn-yellow">JOIN IEDC</button>
+              <IEDCButton
+                to="/contact"
+                size="lg"
+                icon={<ArrowUpRight size={16} />}
+                onClick={() => setIsOpen(false)}
+              >
+                JOIN IEDC
+              </IEDCButton>
             </div>
           </div>
         </div>
+
       </div>
     </nav>
   );

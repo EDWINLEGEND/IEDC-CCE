@@ -1,0 +1,143 @@
+/* ─────────────────────────────────────────────
+   IEDCButton — Global CTA Button Component
+   Matches the Navbar "JOIN IEDC" style exactly.
+   ───────────────────────────────────────────── */
+
+.iedc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    border-radius: 9999px;
+    transition:
+        filter 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease;
+    white-space: nowrap;
+    line-height: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+.iedc-btn:disabled {
+    opacity: 0.45;
+    pointer-events: none;
+}
+
+/* ─── Icon wrappers ─────────────────────── */
+.iedc-btn__icon {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.iedc-btn__label {
+    display: flex;
+    align-items: center;
+}
+
+/* ─── Full width ─────────────────────────── */
+.iedc-btn--full {
+    width: 100%;
+}
+
+/* ─── Size Variants ──────────────────────── */
+.iedc-btn--sm {
+    padding: 0.45rem 1.1rem;
+    font-size: 0.82rem;
+    gap: 5px;
+}
+
+.iedc-btn--md {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
+}
+
+.iedc-btn--lg {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.95rem;
+    gap: 8px;
+}
+
+/* ─── Variant: Primary (orange pill) ── */
+.iedc-btn--primary {
+    background-color: var(--accent-gold);
+    color: #fff;
+    box-shadow: none;
+}
+
+.iedc-btn--primary:hover {
+    filter: brightness(0.92);
+}
+
+.iedc-btn--primary:active {
+    filter: brightness(0.85);
+}
+
+/* ─── Variant: Outline ──────────────────────── */
+.iedc-btn--outline {
+    background: transparent;
+    color: var(--accent-gold);
+    border: 1.5px solid var(--accent-gold);
+    box-shadow: none;
+}
+
+.iedc-btn--outline:hover {
+    background-color: var(--accent-gold);
+    color: #fff;
+}
+
+.iedc-btn--outline:active {
+    opacity: 0.85;
+}
+
+/* ─── Variant: Ghost ────────────────────────── */
+.iedc-btn--ghost {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1.5px solid rgba(0, 0, 0, 0.15);
+    box-shadow: none;
+}
+
+.iedc-btn--ghost:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='dark'] .iedc-btn--ghost {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+[data-theme='dark'] .iedc-btn--ghost:hover {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ─── Dark background context (Footer) ──── */
+.iedc-btn--on-dark.iedc-btn--outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.iedc-btn--on-dark.iedc-btn--outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.iedc-btn--on-dark.iedc-btn--ghost {
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.iedc-btn--on-dark.iedc-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+}

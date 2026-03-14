@@ -1,5 +1,6 @@
 import React from 'react';
 import CardSection from './common/CardSection';
+import IEDCButton from './common/IEDCButton';
 import { Calendar, ArrowRight } from 'lucide-react';
 import './RecentEvents.css';
 
@@ -45,9 +46,9 @@ const RecentEvents = () => {
                 <h2 className="recent-events-title">
                     Recent Events & Activities
                 </h2>
-                <button className="btn btn-primary rounded-pill btn-view-events">
-                    View All Events <ArrowRight size={18} style={{ marginLeft: '5px' }} />
-                </button>
+                <IEDCButton to="/activities" size="md" icon={<ArrowRight size={16} />}>
+                    View All Events
+                </IEDCButton>
             </div>
 
             <div className="gallery-scroll-container">

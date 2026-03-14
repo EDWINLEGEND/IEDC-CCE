@@ -1,13 +1,35 @@
 import React from 'react';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import CardSection from './common/CardSection';
+import BlurredStagger from './common/BlurredStagger';
 import './Achievements.css';
 
 const achievements = [
-    { id: 1, title: "Startups Incubated, providing early stage support and resources for innovators.", value: "15+" },
+    { id: 1, title: "Startups Incubated, providing early-stage support and resources for innovators.", value: "15+" },
     { id: 2, title: "Active Projects, driving groundbreaking innovations and deep industry insights.", value: "50+" },
-    { id: 3, title: "Active Members, serving a reliable community of brilliant student minds.", value: "500+" },
-    { id: 4, title: "Total Funding, delivering streamlined processes for real financial creation.", value: "$50k" },
+    { id: 3, title: "Active Members, building a thriving community of brilliant student minds.", value: "500+" },
+    { id: 4, title: "Seed Funding channeled, empowering student-led ventures to launch and grow.", value: "₹50L+" },
 ];
+
+const StatItem = ({ item, index }) => {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: '-5% 0px' });
+
+    return (
+        <motion.div
+            ref={ref}
+            className="ach-stat-item"
+            key={item.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
+        >
+            <h3 className="ach-stat-value">{item.value}</h3>
+            <p className="ach-stat-label">{item.title}</p>
+        </motion.div>
+    );
+};
 
 const Achievements = () => {
     return (
@@ -22,17 +44,29 @@ const Achievements = () => {
                     </div>
                     <div className="achievements-title-col">
                         <h2 className="ach-section-title">
-                            We are passionate about empowering individuals and <span className="ach-text-muted">businesses to take control of their finances and achieve their financial goals.</span>
+                            <BlurredStagger
+                                text="We are passionate about empowering students and "
+                                scrollBased={true}
+                                stagger={0.012}
+                                duration={0.35}
+                                delay={0}
+                            />
+                            <span className="ach-text-muted">
+                                <BlurredStagger
+                                    text="innovators to build, launch, and lead their ideas into real-world impact."
+                                    scrollBased={true}
+                                    stagger={0.012}
+                                    duration={0.35}
+                                    delay={0.3}
+                                />
+                            </span>
                         </h2>
                     </div>
                 </div>
 
                 <div className="achievements-stats-row">
-                    {achievements.map((item) => (
-                        <div className="ach-stat-item" key={item.id}>
-                            <h3 className="ach-stat-value">{item.value}</h3>
-                            <p className="ach-stat-label">{item.title}</p>
-                        </div>
+                    {achievements.map((item, index) => (
+                        <StatItem item={item} index={index} key={item.id} />
                     ))}
                 </div>
             </div>

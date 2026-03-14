@@ -1,15 +1,20 @@
 @import './NavbarDropdown.css';
 
+/* ─── Base Floating Navbar ─────────────────────────────────────────────────── */
 .navbar {
     position: fixed;
     top: 1rem;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(0);
     width: calc(100% - 2rem);
     max-width: 1800px;
     padding: 0.5rem 1.5rem;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition:
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.45s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
     background: var(--card-bg);
     border-radius: 24px;
     border: 10px solid var(--thick-border);
@@ -17,24 +22,37 @@
     box-sizing: border-box;
 }
 
+/* Slide off screen upward when hidden */
 .navbar-hidden {
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-140%);
+    opacity: 0;
+    pointer-events: none;
 }
 
+.navbar-visible {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Deeper shadow when scrolled */
 .navbar-scrolled {
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09);
 }
 
+/* ─── Layout ─────────────────────────────────────────────────────────────── */
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 100%;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
 }
 
+/* ─── Brand / Logo ──────────────────────────────────────────────────────── */
 .navbar-brand {
     display: flex;
     align-items: center;
@@ -45,12 +63,16 @@
     font-family: var(--font-heading);
     font-size: 1.6rem;
     text-transform: none;
-    /* Changed from uppercase to match image */
     letter-spacing: -0.5px;
     color: var(--text-primary);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    transition: opacity 0.2s;
+}
+
+.navbar-logo:hover {
+    opacity: 0.75;
 }
 
 .logo-bold {
@@ -66,90 +88,103 @@
     margin-top: 4px;
 }
 
+/* ─── Desktop Nav Links ─────────────────────────────────────────────────── */
 .nav-links-desktop {
     display: flex;
-    gap: 2rem;
+    gap: 0.15rem;
     align-items: center;
 }
 
 .nav-link {
     font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 500;
     color: var(--text-secondary);
     text-transform: none;
     letter-spacing: 0;
     position: relative;
-    transition: color 0.3s;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 .nav-link:hover {
-    color: var(--accent-gold);
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
 }
 
+/* Subtle accent underline on hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 14px;
+    height: 2px;
+    background: var(--accent-gold);
+    border-radius: 2px;
+    transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* ─── Desktop Actions ───────────────────────────────────────────────────── */
 .nav-actions-desktop {
     display: flex;
-    gap: 1rem;
+    gap: 0.6rem;
     flex-shrink: 0;
-    margin-left: 1rem;
+    align-items: center;
 }
 
-/* Yellow Button Style */
-.btn-yellow {
-    background-color: var(--accent-gold);
-    color: #fff;
-    border: none;
-    padding: 0.7rem 1.8rem;
-    /* adjusted for navbar size */
-    border-radius: 9999px;
-    font-weight: 500;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
-    text-transform: none;
-    font-size: 0.95rem;
-}
-
-.btn-yellow:hover {
-    filter: brightness(0.9);
-    transform: translateY(-1px);
-}
-
-/* Theme Toggle Button */
+/* Theme Toggle */
 .theme-toggle-btn {
     background: transparent;
-    border: none;
+    border: 1px solid var(--bg-secondary);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background-color 0.2s;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    transition: background-color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
 }
 
 .theme-toggle-btn:hover {
-    background-color: rgba(128, 128, 128, 0.1);
+    background-color: var(--bg-secondary);
 }
 
 .nav-icon {
     color: var(--text-primary);
 }
 
+/* ─── Mobile Hamburger ──────────────────────────────────────────────────── */
 .menu-btn {
     display: none;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 1001;
+    padding: 0.3rem;
+    border-radius: 8px;
+    transition: background 0.2s;
 }
 
+.menu-btn:hover {
+    background: var(--bg-secondary);
+}
+
+/* ─── Mobile Menu ───────────────────────────────────────────────────────── */
 .mobile-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100dvh;
     background-color: var(--bg-primary);
     display: flex;
     flex-direction: column;
@@ -169,25 +204,34 @@
 .mobile-nav-links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.8rem;
     text-align: center;
 }
 
 .mobile-nav-links a {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: var(--text-primary);
     text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.mobile-nav-links a:hover {
+    color: var(--accent-gold);
 }
 
 .mobile-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     flex-direction: column;
+    align-items: center;
 }
 
-@media (max-width: 1200px) {
+/* ─── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
     .nav-links-desktop {
         display: none;
     }
@@ -198,5 +242,13 @@
 
     .menu-btn {
         display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        top: 0.6rem;
+        width: calc(100% - 1.2rem);
+        border-radius: 18px;
     }
 }
