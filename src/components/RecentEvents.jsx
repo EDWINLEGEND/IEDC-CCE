@@ -1,6 +1,8 @@
 import React from 'react';
 import CardSection from './common/CardSection';
+import BlurredStagger from './common/BlurredStagger';
 import IEDCButton from './common/IEDCButton';
+import { motion } from 'framer-motion';
 import { Calendar, ArrowRight } from 'lucide-react';
 import './RecentEvents.css';
 
@@ -43,22 +45,44 @@ const RecentEvents = () => {
     return (
         <CardSection id="recent-events">
             <div className="recent-events-gallery-header">
+                {/* Major title — BlurredStagger */}
                 <h2 className="recent-events-title">
-                    Recent Events & Activities
+                    <BlurredStagger
+                        text="Recent Events & Activities"
+                        scrollBased={true}
+                        stagger={0.022}
+                        duration={0.4}
+                        delay={0}
+                    />
                 </h2>
-                <IEDCButton to="/activities" size="md" icon={<ArrowRight size={16} />}>
-                    View All Events
-                </IEDCButton>
+
+                {/* Button — slide up */}
+                <motion.div
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-8% 0px' }}
+                    transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+                >
+                    <IEDCButton to="/activities" size="md" icon={<ArrowRight size={16} />}>
+                        View All Events
+                    </IEDCButton>
+                </motion.div>
             </div>
 
             <div className="gallery-scroll-container">
-                {events.map((event) => (
-                    <div className="event-gallery-card" key={event.id}>
+                {events.map((event, index) => (
+                    <motion.div
+                        className="event-gallery-card"
+                        key={event.id}
+                        initial={{ opacity: 0, y: 22 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: '-5% 0px' }}
+                        transition={{ duration: 0.5, ease: 'easeOut', delay: index * 0.08 }}
+                    >
                         <div className="event-img-wrapper">
                             <img src={event.img} alt={event.title} className="event-img" />
                             <div className="event-tag">{event.tag}</div>
                         </div>
-
                         <div className="event-content">
                             <div className="event-date">
                                 <Calendar size={14} /> <span>{event.date}</span>
@@ -66,7 +90,7 @@ const RecentEvents = () => {
                             <h3 className="event-title">{event.title}</h3>
                             <p className="event-desc">{event.desc}</p>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
             </div>
         </CardSection>

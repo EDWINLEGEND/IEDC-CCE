@@ -1,5 +1,6 @@
 import React from 'react';
 import CardSection from '../components/common/CardSection';
+import BlurredStagger from '../components/common/BlurredStagger';
 import './ActivitiesPage.css';
 import { FileText, Calendar, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -17,8 +18,23 @@ const ActivitiesPage = () => {
         <div style={{ paddingTop: '8rem' }}>
             <CardSection>
                 <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 className="about-section-heading" style={{ display: 'inline-block', marginBottom: '0' }}>Activities & Reports</h2>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}>Explore our annual reports and recent events</p>
+                    <h2 className="about-section-heading" style={{ display: 'inline-block', marginBottom: '0' }}>
+                        <BlurredStagger
+                            text="Activities & Reports"
+                            scrollBased={false}
+                            stagger={0.03}
+                            duration={0.45}
+                            delay={0.1}
+                        />
+                    </h2>
+                    <motion.p
+                        style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.5 }}
+                    >
+                        Explore our annual reports and recent events
+                    </motion.p>
                 </div>
 
                 <div className="activities-grid">

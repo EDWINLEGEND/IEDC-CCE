@@ -1,21 +1,50 @@
 import React from 'react';
 import CardSection from './common/CardSection';
-import { Search, Code, Users, Lightbulb, TrendingUp, MonitorPlay } from 'lucide-react';
+import BlurredStagger from './common/BlurredStagger';
+import IEDCButton from './common/IEDCButton';
+import { motion } from 'framer-motion';
+import { Search, Code, Users, Lightbulb, TrendingUp, MonitorPlay, ArrowRight } from 'lucide-react';
 import './BentoFeatures.css';
+
+/* Slide-up fade for secondary elements */
+const slideUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 18 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: '-8% 0px' },
+    transition: { duration: 0.55, ease: 'easeOut', delay },
+});
 
 const BentoFeatures = () => {
     return (
         <CardSection id="features">
             <div className="bento-features-header">
+                {/* Major title — BlurredStagger */}
                 <h2 className="bento-main-title">
-                    Innovation, startups & ideas <br />
-                    <span>— in one place.</span>
+                    <BlurredStagger
+                        text="Innovation, startups & ideas"
+                        scrollBased={true}
+                        stagger={0.018}
+                        duration={0.4}
+                        delay={0}
+                    />
+                    <br />
+                    <span>
+                        <BlurredStagger
+                            text="— in one place."
+                            scrollBased={true}
+                            stagger={0.03}
+                            duration={0.4}
+                            delay={0.2}
+                        />
+                    </span>
                 </h2>
-                <div className="bento-search-bar">
+
+                {/* Search bar — slide up */}
+                <motion.div className="bento-search-bar" {...slideUp(0.35)}>
                     <Search size={20} className="search-icon" />
                     <input type="text" placeholder="I'm looking for incubators, labs, or mentorship..." className="search-input" />
                     <button className="search-btn">Search</button>
-                </div>
+                </motion.div>
             </div>
 
             <div className="bento-grid-complex">

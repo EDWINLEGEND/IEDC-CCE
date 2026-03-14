@@ -1,5 +1,7 @@
 import React from 'react';
 import CardSection from './common/CardSection';
+import BlurredStagger from './common/BlurredStagger';
+import { motion } from 'framer-motion';
 import './Excom.css';
 
 const topLeaders = [
@@ -15,40 +17,66 @@ const remainingExcom = Array.from({ length: 12 }, (_, i) => ({
     img: `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80`
 }));
 
-const ExcomCard = ({ member, className }) => (
-    <div className={`excom-photo-card ${className}`}>
+const ExcomCard = ({ member, className, delay = 0 }) => (
+    <motion.div
+        className={`excom-photo-card ${className}`}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-5% 0px' }}
+        transition={{ duration: 0.5, ease: 'easeOut', delay }}
+    >
         <img src={member.img} alt={member.name} className="excom-photo" />
         <div className="excom-photo-gradient"></div>
         <div className="excom-photo-content">
             <span className="excom-photo-role">{member.role}</span>
             <h3 className="excom-photo-name">{member.name}</h3>
         </div>
-    </div>
+    </motion.div>
 );
 
 const Excom = () => {
     return (
         <CardSection id="excom">
             <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
+                {/* Major title — BlurredStagger */}
                 <h2 style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)', letterSpacing: '-1.5px' }}>
-                    Meet Our Excom
+                    <BlurredStagger
+                        text="Meet Our Excom"
+                        scrollBased={true}
+                        stagger={0.03}
+                        duration={0.42}
+                        delay={0}
+                    />
                 </h2>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}>
+
+                {/* Subtitle — slide up */}
+                <motion.p
+                    style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-8% 0px' }}
+                    transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+                >
                     The driving force behind IEDC CCE
-                </p>
+                </motion.p>
             </div>
 
             <div className="excom-top-section">
-                <ExcomCard member={topLeaders[0]} className="nodal-card" />
+                <ExcomCard member={topLeaders[0]} className="nodal-card" delay={0.05} />
                 <div className="excom-top-right">
-                    <ExcomCard member={topLeaders[1]} className="ceo-card" />
-                    <ExcomCard member={topLeaders[2]} className="co-ceo-card" />
+                    <ExcomCard member={topLeaders[1]} className="ceo-card" delay={0.12} />
+                    <ExcomCard member={topLeaders[2]} className="co-ceo-card" delay={0.19} />
                 </div>
             </div>
 
             <div className="excom-bottom-grid">
-                {remainingExcom.map((member) => (
-                    <ExcomCard member={member} key={member.id} className="other-card" />
+                {remainingExcom.map((member, index) => (
+                    <ExcomCard
+                        member={member}
+                        key={member.id}
+                        className="other-card"
+                        delay={index * 0.05}
+                    />
                 ))}
             </div>
         </CardSection>
