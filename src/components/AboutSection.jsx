@@ -15,7 +15,7 @@ const AboutSection = () => {
     return (
         <CardSection id="about">
             {/* Section header */}
-            <div style={{ marginBottom: '4rem', maxWidth: '800px' }}>
+            <div style={{ marginBottom: '4rem', maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
                 <motion.p
                     style={{ color: 'var(--text-secondary)', fontSize: '1rem', fontWeight: '500', marginBottom: '1rem' }}
                     {...slideUp(0)}
