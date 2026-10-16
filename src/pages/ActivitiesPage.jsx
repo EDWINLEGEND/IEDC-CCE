@@ -1,12 +1,15 @@
 import React from 'react';
 import CardSection from '../components/common/CardSection';
 import BlurredStagger from '../components/common/BlurredStagger';
+import IEDCButton from '../components/common/IEDCButton';
 import './ActivitiesPage.css';
 import { FileText, Calendar, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
 
 const ActivitiesPage = () => {
     const reports = [
+        { year: '2026-2027', link: '/reports/activity-report-2026-27.pdf' },
+        { year: '2025-2026', link: '/reports/activity-report-2025-26.pdf' },
         { year: '2022-2023', link: 'https://docs.google.com/document/d/1YWzcHlRNvy-vZacnjVBZlkgmJxPgueOPSbKsJrarfZ4' },
         { year: '2021-2022', link: 'https://drive.google.com/file/d/14m_15U75wi752UBVDmQyyNWgzHFPFHH5' },
         { year: '2020-2021', link: 'https://drive.google.com/file/d/1w8_I3hFuaxtq0FOYDnF-HJnzVL2FxBC8' },
@@ -27,14 +30,14 @@ const ActivitiesPage = () => {
                             delay={0.1}
                         />
                     </h2>
-                    <motion.p
+                    <Motion.p
                         style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}
                         initial={{ opacity: 0, y: 14 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, ease: 'easeOut', delay: 0.5 }}
                     >
                         Explore our annual reports and recent events
-                    </motion.p>
+                    </Motion.p>
                 </div>
 
                 <div className="activities-grid">
@@ -66,31 +69,21 @@ const ActivitiesPage = () => {
                             <Calendar size={28} color="var(--accent-gold)" /> Recent Events
                         </h3>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-
                             <div className="event-list-item">
                                 <div className="event-date-box">
-                                    <span style={{ fontSize: '2rem', fontWeight: '700', lineHeight: '1', color: 'var(--accent-gold)' }}>15</span>
-                                    <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-secondary)' }}>MAR</span>
+                                    <span style={{ fontSize: '1.5rem', fontWeight: '700', lineHeight: '1', color: 'var(--accent-gold)' }}>2026</span>
+                                    <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-secondary)' }}>SUMMIT</span>
                                 </div>
                                 <div>
-                                    <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Idea Pitching Competition</h4>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>Showcase your innovative ideas and win exciting prizes.</p>
-                                    <button className="btn btn-outline rounded-pill" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>Read More</button>
+                                    <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Campus Compass Recognised at IEDC Summit 2026</h4>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.8rem' }}>The CCE student startup powered the IEDC Summit 2026 event map and was recognised at the state-level summit.</p>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0.8rem' }}><strong>Team:</strong> Akanksha Rose Jose, Adithya C Shaji, Gauri Rajesh Menon, and Archa S Kumar (S3 CSDS)</p>
+                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '0' }}><strong>Mentor:</strong> Aswathy P Sajeev, IEDC CCE Nodal Officer</p>
                                 </div>
                             </div>
-
-                            <div className="event-list-item">
-                                <div className="event-date-box">
-                                    <span style={{ fontSize: '2rem', fontWeight: '700', lineHeight: '1', color: 'var(--accent-gold)' }}>22</span>
-                                    <span style={{ fontSize: '0.9rem', fontWeight: '600', color: 'var(--text-secondary)' }}>FEB</span>
-                                </div>
-                                <div>
-                                    <h4 style={{ fontSize: '1.4rem', fontWeight: '600', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Workshop on IoT</h4>
-                                    <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>Hands-on workshop on Internet of Things using Arduino.</p>
-                                    <button className="btn btn-outline rounded-pill" style={{ padding: '0.5rem 1.2rem', fontSize: '0.85rem' }}>Read More</button>
-                                </div>
-                            </div>
-
+                            <IEDCButton to="/events" size="md" icon={<ArrowRight size={16} />}>
+                                All Events 2026-27
+                            </IEDCButton>
                         </div>
                     </div>
 

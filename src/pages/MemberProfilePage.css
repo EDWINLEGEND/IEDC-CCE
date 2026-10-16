@@ -1,0 +1,669 @@
+/* IEDC Fluid Theme - Modern, Open, Unboxed */
+
+:root {
+    --iedc-orange: #f55b23; 
+}
+
+.fluid-page-wrapper {
+    background-color: var(--bg-primary); 
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.fluid-web-mode {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.fluid-qr-mode {
+    padding: 2rem 0 6rem 0;
+}
+
+.fluid-container {
+    display: flex;
+    max-width: 1600px; /* Greatly increased max-width to fill sideways space */
+    width: 92%; /* Ensures it spans most of the screen on ultra-wide monitors */
+    margin: 0 auto;
+    gap: 6rem; /* Restored gap to let elements breathe across the wide space */
+    align-items: flex-start;
+}
+
+/* 1. Immersive Avatar (Sticky) */
+.fluid-avatar-wrapper {
+    flex: 0 0 45%;
+    position: sticky;
+    top: 8rem;
+    height: calc(100vh - 12rem);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+[data-theme='dark'] .fluid-avatar-wrapper {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.fluid-avatar-inner {
+    width: 100%;
+    height: 100%;
+}
+
+.fluid-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.fluid-avatar-brand {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(245, 91, 35, 0.9);
+    color: white;
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.fluid-avatar-socials {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 10;
+}
+
+.fluid-avatar-socials a {
+    color: white;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.fluid-avatar-socials a:hover {
+    background: var(--iedc-orange);
+    transform: translateY(-5px);
+}
+
+/* 2. Content Stream (Right Side) */
+.fluid-content-stream {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+}
+
+/* Header & Typography */
+.fluid-header {
+    margin-bottom: 4rem;
+}
+
+.fluid-tags {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.fluid-tag-primary {
+    color: var(--iedc-orange);
+}
+
+.fluid-tag-separator {
+    color: var(--border-color);
+}
+
+.fluid-tag-secondary {
+    color: var(--text-secondary);
+}
+
+.fluid-name {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 6vw, 6rem); 
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+    margin: 0 0 2rem 0;
+    text-transform: uppercase; 
+}
+
+.fluid-bio {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    max-width: 600px;
+    margin-bottom: 1.5rem;
+}
+
+.fluid-education {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.fluid-education svg {
+    color: var(--iedc-orange);
+}
+
+/* Fluid Actions */
+.fluid-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+}
+
+.fluid-btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--iedc-orange);
+    color: white;
+    border: none;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(245, 91, 35, 0.3);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fluid-btn-primary:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(245, 91, 35, 0.4);
+}
+
+.fluid-action-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.fluid-link-pill {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+.fluid-link-pill:hover {
+    color: var(--iedc-orange);
+    border-bottom-color: var(--iedc-orange);
+}
+
+/* Sections (Skills, Projects) */
+.fluid-section {
+    margin-bottom: 4rem;
+}
+
+.fluid-section:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.fluid-section-title {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+/* Stats Dashboard */
+.fluid-stats-grid {
+    display: flex;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+
+.fluid-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.fluid-stat-value {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 900;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+}
+
+.fluid-stat-label {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--iedc-orange);
+}
+
+/* Experience Timeline */
+.fluid-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.fluid-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border-color);
+}
+
+.fluid-timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.fluid-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.fluid-timeline-marker {
+    position: absolute;
+    left: -2.35rem;
+    top: 0.4rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--iedc-orange);
+    border: 3px solid var(--bg-primary);
+    box-shadow: 0 0 0 2px rgba(245, 91, 35, 0.2);
+    transition: all 0.3s ease;
+}
+
+.fluid-timeline-item:hover .fluid-timeline-marker {
+    box-shadow: 0 0 0 4px rgba(245, 91, 35, 0.4);
+    transform: scale(1.2);
+}
+
+.fluid-timeline-year {
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+
+.fluid-timeline-role {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0 0 0.2rem 0;
+}
+
+.fluid-timeline-org {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--iedc-orange);
+    margin-bottom: 0.8rem;
+}
+
+.fluid-timeline-desc {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* Achievements */
+.fluid-achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.fluid-achievement-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.fluid-achievement-icon {
+    color: var(--iedc-orange);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Skills: Floating Text */
+.fluid-skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fluid-skill-text {
+    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-primary);
+    opacity: 0.8;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+    cursor: default;
+}
+
+.fluid-skill-text:hover {
+    opacity: 1;
+    color: var(--iedc-orange);
+    transform: translateX(10px);
+}
+
+/* Projects: Seamless Rows */
+.fluid-projects-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.fluid-project-row {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.fluid-project-row:first-child {
+    border-top: 1px solid var(--border-color);
+}
+
+.fluid-project-row:hover {
+    border-bottom-color: var(--iedc-orange);
+}
+
+.fluid-project-row-top {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.fluid-project-row h4 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.fluid-project-role {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--iedc-orange);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.fluid-project-desc {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 500px;
+}
+
+/* Footer */
+.fluid-footer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-top: auto;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.fluid-return-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.fluid-return-home:hover {
+    color: var(--text-primary);
+}
+
+
+/* --- RESPONSIVENESS --- */
+
+/* Ultrawide Monitors */
+@media (min-width: 1440px) {
+    .fluid-container {
+        gap: 8rem;
+    }
+    .fluid-avatar-wrapper {
+        flex: 0 0 38%; /* Slightly narrower image on massive screens so content can breathe */
+    }
+}
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+    .fluid-container {
+        gap: 3rem;
+    }
+    .fluid-avatar-wrapper {
+        flex: 0 0 45%;
+    }
+    .fluid-name {
+        font-size: 4rem;
+    }
+    .fluid-skill-text {
+        font-size: 2rem;
+    }
+    .fluid-stats-grid {
+        gap: 2.5rem;
+    }
+}
+
+/* Tablet Portrait & Large Mobile */
+@media (max-width: 900px) {
+    .fluid-container {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem 1rem 0 1rem; /* Removed bottom padding */
+    }
+
+    .fluid-section {
+        margin-bottom: 3rem;
+    }
+
+    .fluid-section:last-of-type {
+        margin-bottom: 1rem;
+    }
+
+    .fluid-avatar-wrapper {
+        flex: none;
+        position: relative;
+        top: 0;
+        width: 100%;
+        height: 55vh;
+        min-height: 450px;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    [data-theme='dark'] .fluid-avatar-wrapper {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    .fluid-qr-mode .fluid-avatar-wrapper {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .fluid-avatar-brand {
+        top: 1.2rem;
+        left: 1.2rem;
+        font-size: 0.75rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .fluid-avatar-socials {
+        bottom: 1.5rem;
+        gap: 1.2rem;
+    }
+
+    .fluid-avatar-socials a {
+        background: rgba(0,0,0,0.55);
+        color: white;
+        padding: 0.8rem;
+    }
+
+    .fluid-content-stream {
+        width: 100%;
+        padding: 1.5rem 0.5rem 1rem 0.5rem;
+    }
+
+    .fluid-name {
+        font-size: clamp(3rem, 12vw, 5rem);
+        margin-bottom: 1rem;
+    }
+
+    .fluid-stats-grid {
+        gap: 2rem;
+        justify-content: flex-start;
+    }
+
+    .fluid-btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 1.2rem;
+    }
+    
+    .fluid-actions {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 3.5rem;
+    }
+
+    .fluid-action-links {
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+
+    .fluid-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-top: auto;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* Small Mobile (Phones) */
+@media (max-width: 480px) {
+    .fluid-container {
+        padding: 0.5rem 0.5rem 0 0.5rem;
+    }
+    
+    .fluid-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .fluid-avatar-wrapper {
+        height: 45vh;
+        min-height: 380px;
+        border-radius: 20px;
+    }
+
+    .fluid-qr-mode .fluid-avatar-wrapper {
+        height: 45vh;
+        min-height: 350px;
+    }
+
+    .fluid-name {
+        font-size: 3.2rem;
+        letter-spacing: -1px;
+    }
+
+    .fluid-bio {
+        font-size: 1.2rem;
+    }
+
+    .fluid-stats-grid {
+        gap: 1.5rem;
+    }
+
+    .fluid-stat-value {
+        font-size: 2.8rem;
+    }
+
+    .fluid-stat-label {
+        font-size: 0.8rem;
+    }
+
+    .fluid-timeline-role {
+        font-size: 1.2rem;
+    }
+
+    .fluid-project-row h4 {
+        font-size: 1.5rem;
+    }
+
+    .fluid-skill-text {
+        font-size: 1.8rem;
+    }
+
+    .fluid-achievement-item {
+        font-size: 1.05rem;
+    }
+    
+    .fluid-avatar-brand {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.65rem;
+    }
+}

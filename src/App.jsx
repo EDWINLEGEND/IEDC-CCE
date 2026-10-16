@@ -1,5 +1,5 @@
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Achievements from './components/Achievements';
@@ -9,13 +9,18 @@ import BentoFeatures from './components/BentoFeatures';
 import Excom from './components/Excom';
 import Footer from './components/Footer';
 import ActivitiesPage from './pages/ActivitiesPage';
+import EventsPage from './pages/EventsPage';
+import EventDetailPage from './pages/EventDetailPage';
 import ContactPage from './pages/ContactPage';
 import TBIPage from './pages/TBIPage';
+import ExecomProfilePage from './pages/ExecomProfilePage';
+import MemberProfilePage from './pages/MemberProfilePage';
 
 import EngraversPage from './pages/EngraversPage';
 import HobbyHubPage from './pages/HobbyHubPage';
 import NotFoundPage from './pages/NotFoundPage';
 import RulesPage from './pages/RulesPage';
+import NISPPage from './pages/NISPPage';
 import ScrollingRibbon from './components/common/ScrollingRibbon';
 import { useEffect } from 'react';
 import Lenis from 'lenis';
@@ -47,6 +52,41 @@ const Home = () => (
 
 import { ThemeProvider } from './context/ThemeContext';
 
+const AppContent = () => {
+  const location = useLocation();
+  // Check if route starts with /qr/execom
+  const isQrRoute = location.pathname.startsWith('/qr/execom/');
+
+  return (
+    <div className="app">
+      {!isQrRoute && <Navbar />}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<div style={{ paddingTop: '6rem' }}><AboutSection /></div>} />
+        <Route path="/activities" element={<ActivitiesPage />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/events/:eventId" element={<EventDetailPage />} />
+        <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
+
+        <Route path="/tbi" element={<TBIPage />} />
+        <Route path="/startups/engravers" element={<EngraversPage />} />
+        <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
+        <Route path="/execom/:roleId" element={<ExecomProfilePage />} />
+        <Route path="/execom/:roleId/:subRoleId" element={<MemberProfilePage isQrMode={false} />} />
+        <Route path="/qr/execom/:roleId/:subRoleId" element={<MemberProfilePage isQrMode={true} />} />
+
+        <Route path="/rules" element={<RulesPage />} />
+        <Route path="/nisp" element={<NISPPage />} />
+
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      {!isQrRoute && <ScrollingRibbon />}
+      {!isQrRoute && <Footer />}
+    </div>
+  );
+};
+
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -72,27 +112,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
-        <div className="app">
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<div style={{ paddingTop: '6rem' }}><AboutSection /></div>} />
-            <Route path="/activities" element={<ActivitiesPage />} />
-            <Route path="/ipl" element={<PlaceholderPage title="IPL 2.0" />} />
-
-            <Route path="/tbi" element={<TBIPage />} />
-            <Route path="/startups/engravers" element={<EngraversPage />} />
-            <Route path="/startups/hobbyhub" element={<HobbyHubPage />} />
-
-            <Route path="/rules" element={<RulesPage />} />
-            <Route path="/nisp" element={<PlaceholderPage title="NISP" />} />
-
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-          <ScrollingRibbon />
-          <Footer />
-        </div>
+        <AppContent />
       </Router>
     </ThemeProvider>
   );

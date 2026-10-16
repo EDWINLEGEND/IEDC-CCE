@@ -1,188 +1,331 @@
-.excom-top-section {
+.excom-header-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap;
+    margin-bottom: 5rem;
+    text-align: center;
 }
 
-.excom-photo-card.nodal-card {
-    width: 240px;
-    max-width: 100%;
-    height: auto;
-    flex: none;
+.excom-main-title {
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
 }
 
-.excom-top-right {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+.excom-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    max-width: 600px;
 }
 
-.excom-photo-card.ceo-card,
-.excom-photo-card.co-ceo-card {
-    width: 220px;
-    max-width: 100%;
-    height: auto;
-    flex: none;
-}
-
-.excom-bottom-grid {
+.excom-fluid-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    max-width: 900px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 5rem 4rem; /* Lots of space to breathe */
 }
 
-.other-card {
-    height: auto;
+/* The fluid card itself - absolutely no borders or backgrounds */
+.excom-fluid-card {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Base Photo Card Styles */
-.excom-photo-card {
+/* Image Wrapper */
+.fluid-card-image-link {
+    display: block;
+    margin-bottom: 2rem;
+    text-decoration: none;
+}
+
+.fluid-card-image-wrapper {
     position: relative;
-    border-radius: 24px;
-    overflow: hidden;
     width: 100%;
     aspect-ratio: 3 / 4;
-    transition: transform 0.4s ease;
-    background-color: var(--card-bg);
-    /* fallback */
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: var(--border-color); /* Skeleton loader background */
 }
 
-.excom-photo-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+/* The Tag (Matches individual profile) */
+.fluid-card-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: rgba(245, 91, 35, 0.9);
+    color: white;
+    backdrop-filter: blur(8px);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-.excom-photo {
+/* Split Image Layout inside the rounded container */
+.fluid-card-split {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.fluid-card-img-pane {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.fluid-card-img-pane img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    filter: brightness(0.95);
+}
+
+.excom-fluid-card:hover .fluid-card-img-pane img {
+    transform: scale(1.05);
+    filter: brightness(1.05);
+}
+
+.fluid-card-poster {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.7s ease;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.excom-photo-card:hover .excom-photo {
-    transform: scale(1.04);
+.excom-fluid-card:hover .fluid-card-poster {
+    transform: scale(1.03);
 }
 
-/* Translucent Gradient from Bottom text rest */
-.excom-photo-gradient {
+/* Subtle gradient to anchor the bottom of the image */
+.fluid-card-overlay {
     position: absolute;
-    bottom: -2px;
-    /* ensure no weird edge gaps */
-    left: 0;
-    right: 0;
-    height: 60%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%);
-    z-index: 1;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 40%);
     pointer-events: none;
+    z-index: 5;
 }
 
-.excom-photo-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 1.25rem;
-    z-index: 2;
+/* Content Stream below the image */
+.fluid-card-content {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
+    padding: 0 0.5rem; /* Slight indent */
 }
 
-/* Larger padding for the big left card */
-.nodal-card .excom-photo-content {
-    padding: 2rem;
-}
-
-.excom-photo-role {
-    background-color: #ffffff;
-    color: #111111;
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-family: var(--font-body);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.excom-photo-name {
-    color: #ffffff;
-    font-size: 1.25rem;
-    font-weight: 500;
+.fluid-card-title {
     font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    margin: 0 0 1rem 0;
     line-height: 1.1;
-    letter-spacing: -0.5px;
-    margin: 0;
+    transition: color 0.4s ease;
 }
 
-/* Larger text for Nodal */
-.nodal-card .excom-photo-name {
-    font-size: 1.6rem;
+.excom-fluid-card:hover .fluid-card-title {
+    color: var(--iedc-orange);
 }
 
-@media (max-width: 1024px) {
-    .excom-photo-card.nodal-card {
-        width: 220px;
-    }
-
-    .excom-photo-card.ceo-card,
-    .excom-photo-card.co-ceo-card {
-        width: 180px;
-    }
-
-    .excom-bottom-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+.fluid-card-desc {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
+/* Minimalist Action Link */
+.fluid-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-primary);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    align-self: flex-start;
+}
+
+.fluid-card-action svg {
+    color: var(--iedc-orange);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.excom-fluid-card:hover .fluid-card-action {
+    color: var(--iedc-orange);
+}
+
+.excom-fluid-card:hover .fluid-card-action svg {
+    transform: translateX(10px);
+}
+
+/* Responsive Grid */
 @media (max-width: 768px) {
-    .excom-top-section {
-        flex-direction: column;
+    .excom-header-container {
+        margin-bottom: 3rem;
     }
 
-    .excom-photo-card.nodal-card {
-        width: 100%;
-        max-width: 400px;
-    }
-
-    .excom-top-right {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .excom-photo-card.ceo-card,
-    .excom-photo-card.co-ceo-card {
-        width: 100%;
-        max-width: 320px;
-    }
-
-    .excom-bottom-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .excom-photo-content {
-        padding: 1.5rem;
-    }
-
-    .nodal-card .excom-photo-content {
-        padding: 1.5rem;
-    }
-
-    .nodal-card .excom-photo-name {
+    .excom-main-title {
         font-size: 2.2rem;
+    }
+
+    .excom-subtitle {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .excom-fluid-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        padding: 0 0.5rem;
+    }
+    
+    .fluid-card-title {
+        font-size: 1.8rem;
+    }
+
+    .fluid-card-image-wrapper {
+        aspect-ratio: 3 / 4;
+        border-radius: 16px;
     }
 }
 
 @media (max-width: 480px) {
-    .excom-bottom-grid {
+    .fluid-card-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* ─── Previous year execom showcase ─────────────────────────────────────── */
+.excom-legacy {
+    margin-top: 7rem;
+    padding: 3.5rem;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: center;
+    border-radius: 28px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.excom-legacy::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -10%;
+    width: 60%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+    opacity: 0.12;
+    pointer-events: none;
+}
+
+.excom-legacy-text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.excom-legacy-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+}
+
+.excom-legacy-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin: 0 0 1.25rem;
+}
+
+.excom-legacy-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 440px;
+    margin: 0 0 2rem;
+}
+
+.excom-legacy-poster-link {
+    display: block;
+    justify-self: center;
+    position: relative;
+    z-index: 1;
+}
+
+.excom-legacy-poster-frame {
+    width: min(340px, 100%);
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.35), 0 0 0 1px var(--border-color);
+    transform: rotate(2deg);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+.excom-legacy-poster-link:hover .excom-legacy-poster-frame {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--border-color);
+}
+
+.excom-legacy-poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .excom-legacy {
         grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 2.5rem 1.5rem;
+        margin-top: 5rem;
+        text-align: center;
+    }
+    .excom-legacy-text {
+        align-items: center;
+    }
+    .excom-legacy-poster-frame {
+        width: min(280px, 100%);
+        transform: rotate(0deg);
     }
 }

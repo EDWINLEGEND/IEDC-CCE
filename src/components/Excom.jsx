@@ -1,35 +1,58 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CardSection from './common/CardSection';
 import BlurredStagger from './common/BlurredStagger';
 import { motion } from 'framer-motion';
+import { execomData } from '../data/execomData';
 import './Excom.css';
 
-const topLeaders = [
-    { id: 1, name: "Nodal Officer Name", role: "Nodal Officer", img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" },
-    { id: 2, name: "CEO Name", role: "CEO", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" },
-    { id: 3, name: "Co-CEO Name", role: "Co-CEO", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" },
-];
-
-const remainingExcom = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 4,
-    name: `Member ${i + 4}`,
-    role: `Executive Position`,
-    img: `https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80`
-}));
-
-const ExcomCard = ({ member, className, delay = 0 }) => (
+const ExcomFluidCard = ({ data, delay = 0 }) => (
     <motion.div
-        className={`excom-photo-card ${className}`}
-        initial={{ opacity: 0, y: 20 }}
+        className="excom-fluid-card"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-5% 0px' }}
-        transition={{ duration: 0.5, ease: 'easeOut', delay }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
     >
-        <img src={member.img} alt={member.name} className="excom-photo" />
-        <div className="excom-photo-gradient"></div>
-        <div className="excom-photo-content">
-            <span className="excom-photo-role">{member.role}</span>
-            <h3 className="excom-photo-name">{member.name}</h3>
+        <Link to={`/execom/${data.id}`} className="fluid-card-image-link">
+            <div className="fluid-card-image-wrapper">
+                {data.card ? (
+                    <img src={data.card} alt={`${data.title} - IEDC CCE Execom`} className="fluid-card-poster" />
+                ) : (
+                    <>
+                        <div className="fluid-card-badge">
+                            #{data.title.replace(/\s+/g, '')}
+                        </div>
+
+                        <div className="fluid-card-split">
+                            {data.members.map((member, idx) => (
+                                <div key={idx} className="fluid-card-img-pane">
+                                    <img src={member.image} alt={member.name} />
+                                </div>
+                            ))}
+                            <div className="fluid-card-overlay"></div>
+                        </div>
+                    </>
+                )}
+            </div>
+        </Link>
+
+        <div className="fluid-card-content">
+            <h3 className="fluid-card-title">
+                {data.title}
+            </h3>
+            
+            <p className="fluid-card-desc">
+                {data.description}
+            </p>
+
+            <Link to={`/execom/${data.id}`} className="fluid-card-action">
+                <span>View Details</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </Link>
         </div>
     </motion.div>
 );
@@ -37,21 +60,18 @@ const ExcomCard = ({ member, className, delay = 0 }) => (
 const Excom = () => {
     return (
         <CardSection id="excom">
-            <div style={{ marginBottom: '3rem', textAlign: 'center' }}>
-                {/* Major title — BlurredStagger */}
-                <h2 style={{ fontSize: '3rem', fontWeight: '700', color: 'var(--text-primary)', letterSpacing: '-1.5px' }}>
+            <div className="excom-header-container">
+                <h2 className="excom-main-title">
                     <BlurredStagger
-                        text="Meet Our Excom"
+                        text="Meet Our Execom"
                         scrollBased={true}
                         stagger={0.03}
                         duration={0.42}
                         delay={0}
                     />
                 </h2>
-
-                {/* Subtitle — slide up */}
                 <motion.p
-                    style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginTop: '1rem' }}
+                    className="excom-subtitle"
                     initial={{ opacity: 0, y: 14 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-8% 0px' }}
@@ -61,24 +81,43 @@ const Excom = () => {
                 </motion.p>
             </div>
 
-            <div className="excom-top-section">
-                <ExcomCard member={topLeaders[0]} className="nodal-card" delay={0.05} />
-                <div className="excom-top-right">
-                    <ExcomCard member={topLeaders[1]} className="ceo-card" delay={0.12} />
-                    <ExcomCard member={topLeaders[2]} className="co-ceo-card" delay={0.19} />
-                </div>
-            </div>
-
-            <div className="excom-bottom-grid">
-                {remainingExcom.map((member, index) => (
-                    <ExcomCard
-                        member={member}
-                        key={member.id}
-                        className="other-card"
-                        delay={index * 0.05}
+            <div className="excom-fluid-grid">
+                {execomData.map((role, index) => (
+                    <ExcomFluidCard
+                        key={role.id}
+                        data={role}
+                        delay={index * 0.1}
                     />
                 ))}
             </div>
+
+            <motion.div
+                className="excom-legacy"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-5% 0px' }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+                <div className="excom-legacy-text">
+                    <span className="excom-legacy-eyebrow">Looking back</span>
+                    <h3 className="excom-legacy-title">Execom 2025-26</h3>
+                    <p className="excom-legacy-desc">
+                        The team that led IEDC CCE through the 2025-26 academic year, laying the groundwork for everything we're building today.
+                    </p>
+                    <a href="/execom/execom-2025-26.jpg" target="_blank" rel="noopener noreferrer" className="fluid-card-action">
+                        <span>View full poster</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <a href="/execom/execom-2025-26.jpg" target="_blank" rel="noopener noreferrer" className="excom-legacy-poster-link">
+                    <div className="excom-legacy-poster-frame">
+                        <img src="/execom/execom-2025-26.jpg" alt="IEDC CCE Execom 2025-26" className="excom-legacy-poster" loading="lazy" />
+                    </div>
+                </a>
+            </motion.div>
         </CardSection>
     );
 };
